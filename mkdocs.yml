@@ -1,0 +1,31 @@
+site_name: "DevUniversity DevOps Bootcamp 202309: FastAPI-Traefik-K8s"
+#site_url: https://devops-boot.github.com/fastapi-k8s/
+repo_url: https://github.com/devops-boot/fastapi-k8s/
+site_description: "Project Documentation for FastAPI-Traefik-K8s Team during DevUniversity DevOps Bootcamp 202309"
+#site_author: ""
+#copyright:
+#remote_branch: ""
+#remote_name: ""
+nav:
+  - Home: index.md
+  - Project: projet.md
+  - Documentation: documentation.md
+exclude_docs: |
+  .placeholder
+#not_in_nav:
+theme: material
+#site_dir: "site"
+use_directory_urls: true
+markdown_extensions:
+  - extra
+  - admonition
+  - codehilite
+  - meta
+  - nl2br
+  - sane_lists
+  - smarty
+  - toc
+  - wikilinks
+plugins:
+  - search:
+      separator: '[\s\-\.\_]+'
