@@ -1,0 +1,67 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.fastapiApp.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: {{ .Values.fastapiApp.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.fastapiApp.name }}
+    spec:
+      containers:
+        - name: {{ .Values.fastapiApp.name }}
+          image: {{ .Values.fastapiApp.image }}
+          env:
+            - name: DATABASE_URL
+              value: {{ .Values.fastapiApp.env.DATABASE_URL }}
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+          ports:
+            - containerPort: {{ .Values.fastapiApp.containerPort }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.fastapiService.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ .Values.fastapiApp.name }}
+  ports:
+    - port: 80
+      targetPort: 8000
+      protocol: TCP
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ .Values.fastapiHpa.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.fastapiApp.name }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ .Values.fastapiApp.name }}
+  minReplicas: {{ .Values.fastapiHpa.minReplicas }}
+  maxReplicas: {{ .Values.fastapiHpa.maxReplicas }}
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.fastapiHpa.averageUtilization }}

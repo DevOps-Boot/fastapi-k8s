@@ -1,0 +1,19 @@
+# Registering the clusterIssuer.
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: {{ .Values.clusterIssuer.name }} # resource name
+spec:
+  acme:
+    # URL of the ACME server
+    server: {{ .Values.clusterIssuer.server }}
+    # Email address used for ACME registration
+    email: {{ .Values.clusterIssuer.email }}
+    # Name of a secret used to store the private key of the ACME account
+    privateKeySecretRef:
+      name: {{ .Values.clusterIssuer.privateKeySecretRef.name }}
+    # Enable HTTP-01 challenge provider
+    solvers:
+      - http01:
+          ingress:
+            class: traefik
