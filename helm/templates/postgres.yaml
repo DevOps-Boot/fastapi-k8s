@@ -1,0 +1,96 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.postgresConfig.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.postgresDb.name }}
+data:
+  POSTGRES_USER: {{ .Values.postgresConfig.POSTGRES_USER }}
+  POSTGRES_PASSWORD: {{ .Values.postgresConfig.POSTGRES_PASSWORD }}
+  POSTGRES_DB: {{ .Values.postgresConfig.POSTGRES_DB }}
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.postgresPv.name }}
+  labels:
+    type: local
+    app: {{ .Values.postgresDb.name }}
+spec:
+  capacity:
+    storage: {{ .Values.postgresPv.storage }}
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: standard
+  hostPath:
+    path: {{ .Values.postgresPv.path }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.postgresPvc.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.postgresDb.name }}
+spec:
+  resources:
+    requests:
+      storage: {{ .Values.postgresPv.storage }}
+  accessModes:
+    - ReadWriteMany
+  storageClassName: standard
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.postgresDb.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.postgresDb.name }}
+  serviceName: {{ .Values.postgresDb.name }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.postgresDb.name }}
+    spec:
+      containers:
+        - name: {{ .Values.postgresDb.name }}
+          image: {{ .Values.postgresDb.image }}
+          imagePullPolicy: "IfNotPresent"
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.postgresConfig.name }}
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data/
+              name: postgres-volume
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+          ports:
+            - containerPort: 5432
+      volumes:
+        - name: postgres-volume
+          persistentVolumeClaim:
+            claimName: {{ .Values.postgresPvc.name }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.postgresService.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.postgresDb.name }}
+spec:
+  selector:
+    app: {{ .Values.postgresDb.name }}
+  type: ClusterIP
+  ports:
+    - port: 5432
+      targetPort: 5432

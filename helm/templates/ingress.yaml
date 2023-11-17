@@ -1,0 +1,27 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.ingress.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    name: {{ .Values.ingress.name }}
+  annotations:
+    cert-manager.io/cluster-issuer: {{ .Values.clusterIssuer.name }}
+spec:
+  ingressClassName: traefik
+  tls:
+    - secretName: ingress-secret
+      hosts:
+        - {{ .Values.ingress.fastapiHostname }}
+  rules:
+    - host: {{ .Values.ingress.fastapiHostname }}
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: {{ .Values.fastapiService.name }}
+                port:
+                  number: 80
