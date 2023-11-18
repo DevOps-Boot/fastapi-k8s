@@ -8,12 +8,14 @@ site_description: "Project Documentation for FastAPI-Traefik-K8s Team during Dev
 #remote_name: ""
 nav:
   - Home: index.md
-  - Project: projet.md
+  - Project: project.md
   - Documentation: documentation.md
 exclude_docs: |
   .placeholder
 #not_in_nav:
-theme: material
+theme:
+  name: material
+  locale: en
 #site_dir: "site"
 use_directory_urls: true
 markdown_extensions:
@@ -26,6 +28,16 @@ markdown_extensions:
   - smarty
   - toc
   - wikilinks
+  - markdown_include.include:
+      base_path: docs  # - markdown_include.include:
+  #     base_path: .
 plugins:
   - search:
       separator: '[\s\-\.\_]+'
+  # - mkdocstrings:
+  #     handlers:
+  #       # See: https://mkdocstrings.github.io/python/usage/
+  #       python:
+  #         options:
+  #           # Possible styles are sphinx, google, or numpy
+  #           docstring_style: sphinx
