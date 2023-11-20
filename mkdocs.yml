@@ -1,21 +1,63 @@
-site_name: "DevUniversity DevOps Bootcamp 202309: FastAPI-Traefik-K8s"
+site_name: "DevOps-Boot: FastAPI-Traefik-K8s"
 #site_url: https://devops-boot.github.com/fastapi-k8s/
 repo_url: https://github.com/devops-boot/fastapi-k8s/
+edit_uri: edit/main/docs/
 site_description: "Project Documentation for FastAPI-Traefik-K8s Team during DevUniversity DevOps Bootcamp 202309"
-#site_author: ""
+site_author: Jacint Balint, Gaudry Joseph-Angélique, Wenceslas Le Texier, Jérémie Tarot
 #copyright:
 #remote_branch: ""
 #remote_name: ""
 nav:
   - Home: index.md
-  - Project: project.md
-  - Documentation: documentation.md
+  - Project: project/index.md
+  - Documentation: documentation/index.md
+  - Appendices: appendices/index.md
 exclude_docs: |
   .placeholder
 #not_in_nav:
 theme:
   name: material
+  #custom_dir: overrides
   locale: en
+  palette:
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: teal
+      accent: lime
+      media: "(prefers-color-scheme: dark)"
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    # Palette toggle for light mode
+    - scheme: default
+      primary: teal
+      accent: green
+      media: "(prefers-color-scheme: light)"
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  font:
+    text: Comfortaa
+    code: B612 Mono
+  icon:
+    logo: material/cloud-circle
+    edit: material/pencil
+    view: material/eye
+  favicon: material/cloud-circle
+  features:
+    #- header.autohide
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - toc.follow
+    #- toc.integrate
+    - search.suggest
+    - content.action.edit
 #site_dir: "site"
 use_directory_urls: true
 markdown_extensions:
@@ -28,9 +70,14 @@ markdown_extensions:
   - smarty
   - toc
   - wikilinks
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
   - markdown_include.include:
-      base_path: docs  # - markdown_include.include:
-  #     base_path: .
+      base_path: docs
 plugins:
   - search:
       separator: '[\s\-\.\_]+'
@@ -41,3 +88,36 @@ plugins:
   #         options:
   #           # Possible styles are sphinx, google, or numpy
   #           docstring_style: sphinx
+  - tags
+  - mike:
+      # These fields are all optional; the defaults are as below...
+      alias_type: symlink
+      redirect_template: null
+      deploy_prefix: ''
+      canonical_version: null
+      version_selector: true
+      css_dir: assets/css
+      javascript_dir: assets/js
+# extra_css:
+#   - assets/stylesheets/extra.css
+# extra_javascript:
+#   - assets/javascripts/extra.js
+extra:
+  alternate:
+    - name: English
+      link: /en/ 
+      lang: en
+    - name: Français
+      link: /fr/
+      lang: fr
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/devops-boot/fastapi-k8s/
+      name: Project repository on GitHub
+    - icon: fontawesome/brands/slack
+      link: https://dst-sept23.slack.com/app_redirect?channel=C061W1C8W3T
+      name: Project Slack channel (private)
+  #homepage: https://example.com
+  version:
+    provider: mike
+copyright: Copyright &copy; 2023 Jacint Balint, Gaudry Joseph-Angélique, Wenceslas Le Texier, Jérémie Tarot
