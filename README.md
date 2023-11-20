@@ -60,7 +60,7 @@ The application stack includes Traefik, FastAPI, PostgreSQL, Kubernetes, and var
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-### Who this project is for
+### Audience
 
 This project is mainly intended for the examination jury to assess candidates' skills and knowledge.
 
