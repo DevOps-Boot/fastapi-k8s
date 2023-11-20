@@ -2,5 +2,5 @@
 # https://docs.netlify.com/configure-builds/file-based-configuration/
 [build]
   base = ""
-  command = "mkdocs build -d docs/.site"
-  publish = "docs/.site"
+  command = "mkdocs build -d .site"
+  publish = ".site"
