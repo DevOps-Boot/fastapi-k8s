@@ -2,7 +2,8 @@ name: Deploy to ECR
 
 on:
   push:
-    branches: [master]
+    branches: [main]
+  workflow_dispatch:
 
 env:
   ECR_REPOSITORY: devops-boot
