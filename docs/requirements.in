@@ -8,6 +8,9 @@ pymdown-extensions==10.4
 markdown-blockdiag==0.8.0
 mkdocs-awesome-pages-plugin==2.9.2
 mkdocs-git-revision-date-localized-plugin==1.2.1
+mkdocs-material[imaging]==9.4.9
+# mkdocs-git-committers-plugin-2
+# mkdocs-git-authors-plugin
 # mkdocs-minify-plugin
 # mkdocs-pdf-export-plugin
 # mkdocs-with-pdf

@@ -1,12 +1,14 @@
 site_name: "DevOps-Boot: FastAPI-Traefik-K8s"
-#site_url: https://devops-boot.github.com/fastapi-k8s/
+site_url: https://devops-boot.netlify.app/
 repo_url: https://github.com/devops-boot/fastapi-k8s/
+#repo_name: squidfunk/mkdocs-material
 edit_uri: edit/main/docs/
 site_description: "Project Documentation for FastAPI-Traefik-K8s Team during DevUniversity DevOps Bootcamp 202309"
 site_author: Jacint Balint, Gaudry Joseph-Angélique, Wenceslas Le Texier, Jérémie Tarot
 #copyright:
 #remote_branch: ""
 #remote_name: ""
+#docs_dir:
 nav:
   - Home: index.md
   - Project: project/index.md
@@ -39,11 +41,50 @@ theme:
   font:
     text: Comfortaa
     code: B612 Mono
+  #logo: assets/images/logo.png
   icon:
     logo: material/cloud-circle
+    # menu:
+    # alternate:
+    # search:
+    # share:
+    # close:
+    # top:
     edit: material/pencil
     view: material/eye
-  favicon: material/cloud-circle
+    # repo: fontawesome/brands/git-alt
+    admonition:
+      # Octoicons set
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+      # FontAwesome set
+      # note: fontawesome/solid/note-sticky
+      # abstract: fontawesome/solid/book
+      # info: fontawesome/solid/circle-info
+      # tip: fontawesome/solid/bullhorn
+      # success: fontawesome/solid/check
+      # question: fontawesome/solid/circle-question
+      # warning: fontawesome/solid/triangle-exclamation
+      # failure: fontawesome/solid/bomb
+      # danger: fontawesome/solid/skull
+      # bug: fontawesome/solid/robot
+      # example: fontawesome/solid/flask
+      # quote: fontawesome/solid/quote-left
+    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tag-icons-and-identifiers
+    # tag:
+    # previous: fontawesome/solid/angle-left
+    # next: fontawesome/solid/angle-right
+  # favicon: assets/images/favicon.png
   features:
     #- header.autohide
     - navigation.tabs
@@ -57,21 +98,46 @@ theme:
     - toc.follow
     #- toc.integrate
     - search.suggest
+    - search.share
+    - content.action.view
     - content.action.edit
 #site_dir: "site"
 use_directory_urls: true
 markdown_extensions:
+  # Python Markdown
+  # extra = abbr + attr_list + def_list + fenced code + footnotes + md_in_html + tables
   - extra
   - admonition
-  - codehilite
+  # - codehilite # Superseded by highlight
   - meta
   - nl2br
   - sane_lists
   - smarty
-  - toc
+  - toc:
+      permalink: true
+      toc_depth: 3
   - wikilinks
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
   - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
   - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - pymdownx.tilde
   - pymdownx.snippets:
       auto_append:
@@ -81,6 +147,20 @@ markdown_extensions:
 plugins:
   - search:
       separator: '[\s\-\.\_]+'
+  - tags
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+  # https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/
+  - social
+  #     enabled: !ENV [CI, false]
+  # # Document contributors (Sponsors only)
+  # - git-committers:
+  #     repository: squidfunk/mkdocs-material
+  #     branch: main
+  #     enabled: !ENV [CI, false]
+  # # Document authors (lightweight alt. to git-commiters, Sponsors only)
+  # - git-authors
   # - mkdocstrings:
   #     handlers:
   #       # See: https://mkdocstrings.github.io/python/usage/
@@ -88,21 +168,22 @@ plugins:
   #         options:
   #           # Possible styles are sphinx, google, or numpy
   #           docstring_style: sphinx
-  - tags
-  - mike:
-      # These fields are all optional; the defaults are as below...
-      alias_type: symlink
-      redirect_template: null
-      deploy_prefix: ''
-      canonical_version: null
-      version_selector: true
-      css_dir: assets/css
-      javascript_dir: assets/js
+  # - mike:
+  #     # These fields are all optional; the defaults are as below...
+  #     alias_type: symlink
+  #     redirect_template: null
+  #     deploy_prefix: ''
+  #     canonical_version: null
+  #     version_selector: true
+  #     css_dir: assets/css
+  #     javascript_dir: assets/js
 # extra_css:
 #   - assets/stylesheets/extra.css
 # extra_javascript:
 #   - assets/javascripts/extra.js
 extra:
+  # Set this if you want it to be different from site_url
+  # homepage: https://example.com
   alternate:
     - name: English
       link: /en/ 
