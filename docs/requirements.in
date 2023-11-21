@@ -5,10 +5,15 @@ markdown-include==0.8.1
 mike==2.0.0
 pygments==2.17.1
 pymdown-extensions==10.4
-markdown-blockdiag==0.8.0
+# FIXME TypeError: '<' not supported between instances of 'int' and 'str'
+#markdown-blockdiag @ git+https://github.com/silopolis/markdown-blockdiag@master
 mkdocs-awesome-pages-plugin==2.9.2
+#mkdocs-literate-nav==
+mkdocs-section-index==0.3.8
 mkdocs-git-revision-date-localized-plugin==1.2.1
 mkdocs-material[imaging]==9.4.9
+mkdocs-ezglossary-plugin==1.5.5
+mkdocs-kroki-plugin==0.6.1
 # mkdocs-git-committers-plugin-2
 # mkdocs-git-authors-plugin
 # mkdocs-minify-plugin

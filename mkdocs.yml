@@ -9,13 +9,29 @@ site_author: Jacint Balint, Gaudry Joseph-Angélique, Wenceslas Le Texier, Jér�
 #remote_branch: ""
 #remote_name: ""
 #docs_dir:
-nav:
-  - Home: index.md
-  - Project: project/index.md
-  - Documentation: documentation/index.md
-  - Appendices: appendices/index.md
+# nav:
+#   - Home: index.md
+#   - Project:
+#     - project/index.md
+#     - Introduction: project/introduction.md
+#     #- Requirements:
+#     - Situations:
+#       - project/situations/index.md
+#       - project/situations/gja.md
+#       - project/situations/jbt.md
+#       - project/situations/jtt.md
+#       - project/situations/wlt.md
+#     - Conclusion: project/conclusion.md
+#   - Documentation:
+#     - documentation/index.md
+#     - Project management: documentation/pm.md
+#     - Source code management: documentation/scm.md
+#     - Installation: documentation/installation.md
+#     - Documentation: documentation/documentation.md
+#   - Appendices: appendices/index.md
 exclude_docs: |
   .placeholder
+  .pages
 #not_in_nav:
 theme:
   name: material
@@ -87,6 +103,7 @@ theme:
   # favicon: assets/images/favicon.png
   features:
     #- header.autohide
+    #- toc.integrate
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.path
@@ -115,6 +132,7 @@ markdown_extensions:
   - smarty
   - toc:
       permalink: true
+      baselevel: 1
       toc_depth: 3
   - wikilinks
 
@@ -128,29 +146,67 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      use_pygments: true
+      pygments_lang_class: true
+      auto_title: true
+      anchor_linenums: true
+      linenums_style: pymdownx-inline
+      line_spans: __span
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.mark
+  - pymdownx.critic:
+      mode: view
   - pymdownx.smartsymbols
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+      combine_header_slug: true
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
   - pymdownx.snippets:
       auto_append:
-        - includes/abbreviations.md
+        - appendices/abbreviations.md
   - markdown_include.include:
       base_path: docs
+  # - markdown_blockdiag:
+  #     format: svg
 plugins:
   - search:
       separator: '[\s\-\.\_]+'
-  - tags
+  - awesome-pages:
+      collapse_single_pages: true
+  - section-index
+  - tags:
+      enabled: true
+      tags_file: appendices/tags.md
   - git-revision-date-localized:
       enable_creation_date: true
       type: date
+  - ezglossary:
+      use_default: true
+      sections:
+        - terms
+        - config
+      #inline_refs: full
+      tooltip: full
+      list_definitions: true
+      list_references: true
+  # https://github.com/AVATEAM-IT-SYSTEMHAUS/mkdocs-kroki-plugin
+  - kroki:
+      EnableDiagramsnet: true
+      # DownloadImages: true
+      # DownloadDir: assets/images/kroki_generated
+      #HttpMethod: POST
+      FileTypes:
+        - svg
+        - png
   # https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/
   - social
   #     enabled: !ENV [CI, false]
@@ -186,7 +242,7 @@ extra:
   # homepage: https://example.com
   alternate:
     - name: English
-      link: /en/ 
+      link: /en/
       lang: en
     - name: Français
       link: /fr/
