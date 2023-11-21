@@ -2,6 +2,8 @@
 
 ***Modalités de certification***
 
+<!-- [TOC] -->
+
 <!-- markdownlint-disable MD026 -->
 ## Modalités de certification pou le titre R.N.C.P.
 <!-- markdownlint-enable MD026 -->

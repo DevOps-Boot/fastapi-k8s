@@ -1,6 +1,6 @@
-
 # DevOps : Déploiement et cycle de vie d’une application
 
+<!-- [TOC] -->
 
 ## Description détaillée
 

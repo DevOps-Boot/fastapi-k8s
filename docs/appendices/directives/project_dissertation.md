@@ -1,13 +1,6 @@
 # Dossier Projet : Cursus Ingénieur DevOps
 
-
-## Sommaire
-
-* Attendus de mises en forme
-* Attendus de contenu
-* Accompagnement et modalités de rendu du dossier
-* Soutenance orale
-
+<!-- [TOC] -->
 
 ## Attendus sur la forme
 

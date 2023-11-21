@@ -1,3 +1,10 @@
+---
+tags:
+  - git
+  - github
+  - repository
+---
+
 # Source code management
 
 ## GitHub repository creation and basic configuration
