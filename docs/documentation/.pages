@@ -1,0 +1,7 @@
+title: Documentation
+nav:
+  - index.md
+  - project_management.md
+  - scm.md
+  - installation.md
+  - documentation.md

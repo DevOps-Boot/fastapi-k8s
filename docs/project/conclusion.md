@@ -1,6 +1,4 @@
-# Conclusion et ouverture
-
-TODO: Conclusion
+# Conclusion
 
 * Résumer la *démarche* et répondre aux *problématiques* du projet
 * Ouverture : montrer que le projet peut faire écho à d’*autres enjeux*

@@ -1,5 +1,6 @@
 # Projet FastAPi Treafik
 
+<!-- [TOC] -->
 
 ## Objectifs principaux
 

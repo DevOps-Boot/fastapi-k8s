@@ -2,14 +2,18 @@
 
 Support documents provided for project inception and planning:
 
-* [**Dossier project**](dossier_projet.md)
+* [**DevOps Project**](devops_project.md)
 
-  Voici un document pour vous aider à la rédaction du dossier projet et sa forme Cahier des charges du dossier \
+    Proposed project sheet and details of the stages.
 
-* [**Projet DevOps**](projet_devops.md)
+* [**Project dissertation**](project_dissertation.md)
 
-  Fiche projet proposé et détail des étapes
+    Support document for the redaction of the project dissertation.
 
-* [**Validation DevOps**](validation_devops.md)
+* [**Activities and skills framework**](rncp_framework.md)
 
-  Document présentant les conditions de validations de la certification RNCP
+    List and description of the activities and competencies defined as reference for the RNCP36061 professional title.
+
+* [**Professional title validation**](rncp_validation.md)
+
+    Document presenting the validation conditions of the RNCP certification.

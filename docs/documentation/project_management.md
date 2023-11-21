@@ -1,3 +1,18 @@
+---
+tags:
+  - project
+  - github
+  - label
+  - milestone
+  - workflow
+  - status
+  - pull request
+  - issue
+  - review
+  - dod
+  - definition of done
+---
+
 # Project management
 
 

@@ -1,5 +1,4 @@
 <!-- PROJECT LOGO -->
-<br />
 <div align="center">
   <!-- <a href="https://github.com/devops-boot/fastapi-k8s">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
@@ -18,11 +17,11 @@
 </div>
 
 
-[Introduction](introduction.md)
+<!-- [Introduction](introduction.md)
 [Project](project/index.md)
-[Project  implementation](documentation/index.md)
+[Documentation](documentation/index.md)
 [Conclusion](conclusion.md)
-[Appendices](appendices/index.md)
+[Appendices](appendices/index.md) -->
 
 
 ## About The Project

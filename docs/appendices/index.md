@@ -1,9 +1,11 @@
 # Appendices
 
-TODO: Appendices ToC
+<!-- [TOC] -->
 
-[Planning](planning.md)
+[Glossary](glossary.md)
 
-[Directives](directives/index.md)
+[Tags](tags.md)
 
 [Bibliography](bibliography.md)
+
+[Directives](directives/index.md)

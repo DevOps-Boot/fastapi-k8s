@@ -1,4 +1,9 @@
-# FastAPI / traefi project blabla
+---
+tags:
+  - installation
+---
+
+# Installation
 
 Context: The fastapi-traefik application provided by DataScientest
 originally used the docker compose format. The application was updated
@@ -26,16 +31,18 @@ We're using HELM charts to launch the application in a k8s cluster.
 ## Preparation of the dev environment
 
 ### Install kubectl
+
 TODO
 
 ### Install helm
+
 TODO
 
 ### Install k3s
 
 We install the cluster with etcd and set up the kubeconfig file.
 
-```
+```console
 curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server --cluster-init
 
 sudo chmod 644 /etc/rancher/k3s/k3s.yaml
@@ -43,15 +50,15 @@ sudo chmod 644 /etc/rancher/k3s/k3s.yaml
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 ```
 
-### Install cert manager:
+### Install cert manager
 
-```
+```console
 helm repo add jetstack https://charts.jetstack.io
 
 helm repo update
 ```
 
-```
+```console
 helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
@@ -62,13 +69,13 @@ helm install \
 
 ### Clone the repository
 
-```
+```console
 git clone git@github.com:DevOps-Boot/fastapi-k8s.git
 ```
 
 ### Launch the development environment
 
-```
+```console
 cd fastapi-k8s
 
 helm install fastapi-chart ./helm --values=helm/values-dev.html
@@ -77,4 +84,3 @@ helm install fastapi-chart ./helm --values=helm/values-dev.html
 ### Connect to the local instance
 
 Open `http://fastapi.localhost:80` in a browser on the local machine (or using a port forward, if it's on a remote host).
-

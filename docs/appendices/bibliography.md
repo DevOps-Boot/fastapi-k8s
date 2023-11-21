@@ -1,3 +1,3 @@
 # Bibliography
 
-TODO: Bibliography
+<!-- [TOC] -->
