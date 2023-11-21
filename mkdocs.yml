@@ -189,15 +189,15 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
       type: date
-  - ezglossary:
-      use_default: true
-      sections:
-        - terms
-        - config
-      #inline_refs: full
-      tooltip: full
-      list_definitions: true
-      list_references: true
+  # - ezglossary:
+  #     use_default: true
+  #     sections:
+  #       - terms
+  #       - config
+  #     #inline_refs: full
+  #     tooltip: full
+  #     list_definitions: true
+  #     list_references: true
   # https://github.com/AVATEAM-IT-SYSTEMHAUS/mkdocs-kroki-plugin
   - kroki:
       EnableDiagramsnet: true
