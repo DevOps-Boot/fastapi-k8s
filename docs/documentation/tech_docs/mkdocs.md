@@ -4,7 +4,7 @@ tags:
   - mkdocs
 ---
 
-# Documentation system
+# MkDocs
 
 
 All technical content is written using the [Markdown](https://wikipedia.org/wiki/Markdown) lightweight markup syntax, specifically the [CommonMark](https://commonmark.org).

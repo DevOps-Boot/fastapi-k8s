@@ -1,9 +1,11 @@
-# Technical Documentation
+# Technical Writing
 
 
 ## Markup
 
+
 ## Style guide
+
 
 ## Documentation layout
 

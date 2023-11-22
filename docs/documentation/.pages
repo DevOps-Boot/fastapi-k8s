@@ -1,8 +1,7 @@
 title: Documentation
 nav:
   - index.md
-  - project_management.md
-  - scm.md
-  - mkdocs.md
-  - tech_docs.md
+  - pm
+  - scm
+  - tech_docs
   - installation.md

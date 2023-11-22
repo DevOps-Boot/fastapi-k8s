@@ -1,0 +1,5 @@
+title: Docs
+nav:
+  - index.md
+  - mkdocs.md
+  - tech_writing.md
