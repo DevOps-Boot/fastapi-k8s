@@ -3,5 +3,6 @@ nav:
   - index.md
   - project_management.md
   - scm.md
+  - mkdocs.md
+  - tech_docs.md
   - installation.md
-  - documentation.md
