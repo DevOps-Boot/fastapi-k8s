@@ -207,6 +207,9 @@ plugins:
       FileTypes:
         - svg
         - png
+  # https://fotrimzi.github.io/mkdocs-showcase/variables.html
+  - macros:
+      include_yaml: ['docs/includes/extra.yaml']
   # https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/
   - social
   #     enabled: !ENV [CI, false]

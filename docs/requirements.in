@@ -14,6 +14,7 @@ mkdocs-git-revision-date-localized-plugin==1.2.1
 mkdocs-material[imaging]==9.4.9
 mkdocs-ezglossary-plugin==1.5.5
 mkdocs-kroki-plugin==0.6.1
+mkdocs-macros-plugin==1.0.5
 # mkdocs-git-committers-plugin-2
 # mkdocs-git-authors-plugin
 # mkdocs-minify-plugin

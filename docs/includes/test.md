@@ -1,5 +1,12 @@
 # Testing and demonstration page
 
+{% set test_local_var = "Test local variable value" %}
+
+## Variables
+
+* test_local_var: {{ test_local_var }}
+* test_global_var: {{ test_global_var }}
+
 
 ## Glossary
 

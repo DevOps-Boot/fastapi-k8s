@@ -1,0 +1,5 @@
+# Define global variables here
+# You can create other files and add them to the plugins.macros.include_yaml
+# array in mkdocs.yml
+extra:
+  test_global_var: "Test global variable value"

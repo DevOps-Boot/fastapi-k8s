@@ -64,6 +64,7 @@ jinja2==3.1.2
     #   mike
     #   mkdocs
     #   mkdocs-ezglossary-plugin
+    #   mkdocs-macros-plugin
     #   mkdocs-material
 markdown==3.5.1
     # via
@@ -89,6 +90,7 @@ mkdocs==1.5.3
     #   mkdocs-ezglossary-plugin
     #   mkdocs-git-revision-date-localized-plugin
     #   mkdocs-kroki-plugin
+    #   mkdocs-macros-plugin
     #   mkdocs-material
     #   mkdocs-section-index
 mkdocs-awesome-pages-plugin==2.9.2
@@ -98,6 +100,8 @@ mkdocs-ezglossary-plugin==1.5.5
 mkdocs-git-revision-date-localized-plugin==1.2.1
     # via -r docs/requirements.in
 mkdocs-kroki-plugin==0.6.1
+    # via -r docs/requirements.in
+mkdocs-macros-plugin==1.0.5
     # via -r docs/requirements.in
 mkdocs-material[imaging]==9.4.9
     # via -r docs/requirements.in
@@ -146,13 +150,16 @@ pyparsing==3.1.1
 pyproject-hooks==1.0.0
     # via build
 python-dateutil==2.8.2
-    # via ghp-import
+    # via
+    #   ghp-import
+    #   mkdocs-macros-plugin
 pytz==2023.3.post1
     # via mkdocs-git-revision-date-localized-plugin
 pyyaml==6.0.1
     # via
     #   mike
     #   mkdocs
+    #   mkdocs-macros-plugin
     #   pymdown-extensions
     #   pyyaml-env-tag
 pyyaml-env-tag==0.1
@@ -175,6 +182,8 @@ sqlalchemy==1.4.41
     #   ormar
 starlette==0.22.0
     # via fastapi
+termcolor==2.3.0
+    # via mkdocs-macros-plugin
 tinycss2==1.2.1
     # via
     #   cairosvg
