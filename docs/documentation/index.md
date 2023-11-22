@@ -8,4 +8,5 @@
 [Project management](project_management.md)
 [Source code management](scm.md)
 [Installation](installation.md)
-[Project documentation](documentation.md)
+[MkDocs](mkdocs.md)
+[Technical documentation](tech_docs.md)
