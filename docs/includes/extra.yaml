@@ -3,3 +3,7 @@
 # array in mkdocs.yml
 extra:
   test_global_var: "Test global variable value"
+  DevU: "[DevUniversity](https://www.devuniversity.com/)"
+  DevOps_Cert: "['DevOps Engineer' training and certification](https://www.devuniversity.com/formation-devops)"
+  RNCP36061: "[RNCP36061 'DevOps System Administrator' professional title](https://www.francecompetences.fr/recherche/rncp/36061/)"
+  DevOps: "[DevOps](https://en.wikipedia.org/wiki/DevOps)"

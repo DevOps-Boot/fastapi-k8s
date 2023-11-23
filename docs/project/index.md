@@ -14,6 +14,8 @@
 
 [Introduction](introduction.md)
 
+[Project overview](overview.md)
+
 [Implemented skills and competencies](competencies.md)
 
 [Requirements and specifications](requirements/index.md)
