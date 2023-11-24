@@ -1,7 +1,6 @@
 ---
 tags:
   - project
-  - context
 ---
 
 # Project Context

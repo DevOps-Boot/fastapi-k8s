@@ -1,3 +1,8 @@
+---
+tags:
+  - project
+---
+
 # Project brief
 
 An example of a generic Python RESTful API application is proposed by DataScientest in a GitHub [repository](https://github.com/DataScientest/fastapi-docker-traefik).

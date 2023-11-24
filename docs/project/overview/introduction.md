@@ -1,3 +1,8 @@
+---
+tags:
+  - project
+---
+
 # Introduction
 
 <!-- [TOC] -->
