@@ -18,7 +18,7 @@
 
 [Requirements and specifications](requirements/index.md)
 
-[Implemented skills and competencies](competencies.md)
+[Implemented skills and competencies](skills.md)
 
 [Work situations](situations/index.md)
 
