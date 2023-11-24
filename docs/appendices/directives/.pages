@@ -5,3 +5,5 @@ nav:
   - Dissertation: project_dissertation.md
   - Skill framework: rncp_framework.md
   - Title validation: rncp_validation.md
+  - RNCP project context: rncp_project_context.md
+  - RNCP project perimeter: rncp_project_perimeter.md
