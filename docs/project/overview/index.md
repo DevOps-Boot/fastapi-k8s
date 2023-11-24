@@ -8,6 +8,8 @@ tags:
 
 [Project introduction](introduction.md)
 
+[Project brief](brief.md)
+
 [Project context](context.md)
 
 [Project objectives](objectives.md)
