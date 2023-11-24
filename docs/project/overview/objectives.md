@@ -7,7 +7,7 @@ tags:
 # Project objectives
 
 
-## Automate Cloud infrastructure deployment
+## Automate cloud infrastructure provisioning
 
 - Develop and execute scripts for automating server creation, ensuring that server provisioning aligns with the project's architecture requirements.
 
@@ -16,6 +16,10 @@ tags:
 - Integrate robust security measures at every stage of infrastructure deployment to safeguard against vulnerabilities.
 
 - Establish a test and pre-production environment for validating updates and configurations before they are deployed to production.
+
+- Configure backup and Disaster recovery
+
+- Implement security best practices throughout
 
 
 ## Continuously deploy an application
