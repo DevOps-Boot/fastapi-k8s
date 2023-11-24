@@ -14,13 +14,11 @@
 
 [Introduction](introduction.md)
 
-[Project overview](overview.md)
-
-[Implemented skills and competencies](competencies.md)
+[Project overview](overview/index.md)
 
 [Requirements and specifications](requirements/index.md)
 
-[Project planning](planning.md)
+[Implemented skills and competencies](competencies.md)
 
 [Work situations](situations/index.md)
 
