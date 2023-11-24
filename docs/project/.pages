@@ -1,10 +1,8 @@
 title: Project
 nav:
   - index.md
-  - introduction.md
-  - overview.md
-  - competencies.md
+  - overview
   - requirements
-  - planning.md
+  - competencies.md
   - situations
   - conclusion.md
