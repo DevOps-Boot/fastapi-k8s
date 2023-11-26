@@ -8,7 +8,7 @@ on:
 env:
   ECR_REPOSITORY: devops-boot
   CONTAINER_NAME: fastapi_app
-  AWS_REGION: eu-west-3
+  AWS_REGION: us-east-1  # Used for a public registry
 
 jobs:
   build:
