@@ -1,6 +1,7 @@
 title: Project
 nav:
   - index.md
+  - introduction.md
   - overview
   - requirements
   - skills.md
