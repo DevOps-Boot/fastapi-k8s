@@ -9,7 +9,7 @@ ingress:
 fastapiApp:
   replicas: 3
   name: "fastapi-app"
-  image: "dockerkvark/fastapi_app:v5"
+  image: "public.ecr.aws/v4m5s6o6/devops-boot:latest"
   containerPort: 8000
   env:
     DATABASE_URL: "postgresql://fastapi_traefik:fastapi_traefik@postgres-service:5432/fastapi_traefik"
