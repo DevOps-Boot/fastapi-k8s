@@ -12,23 +12,6 @@ data:
   POSTGRES_DB: {{ .Values.postgresConfig.POSTGRES_DB }}
 ---
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: {{ .Values.postgresPv.name }}
-  labels:
-    type: local
-    app: {{ .Values.postgresDb.name }}
-spec:
-  capacity:
-    storage: {{ .Values.postgresPv.storage }}
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Recycle
-  storageClassName: standard
-  hostPath:
-    path: {{ .Values.postgresPv.path }}
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ .Values.postgresPvc.name }}
@@ -40,8 +23,8 @@ spec:
     requests:
       storage: {{ .Values.postgresPv.storage }}
   accessModes:
-    - ReadWriteMany
-  storageClassName: standard
+    - ReadWriteOnce
+  storageClassName: ebs-sc
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -67,7 +50,7 @@ spec:
             - configMapRef:
                 name: {{ .Values.postgresConfig.name }}
           volumeMounts:
-            - mountPath: /var/lib/postgresql/data/
+            - mountPath: /var/lib/postgresql/
               name: postgres-volume
           resources:
             limits:
