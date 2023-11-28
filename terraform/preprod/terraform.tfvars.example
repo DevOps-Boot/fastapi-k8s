@@ -1,0 +1,4 @@
+AWS_ACCESS_KEY_ID = aws_key_id
+AWS_SECRET_ACCESS_KEY = aws_key
+
+# These values need to be set as enviromental secrets in Terraform Cloud.
