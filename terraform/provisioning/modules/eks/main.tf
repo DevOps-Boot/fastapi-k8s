@@ -18,11 +18,25 @@ module "eks" {
   subnet_ids                     = var.subnet_ids
   cluster_endpoint_public_access = true
 
-  eks_managed_node_group_defaults = var.eks_managed_node_group_defaults
-  eks_managed_node_groups         = var.eks_managed_node_groups
+  cluster_addons = {
+    aws-ebs-csi-driver = {
+      most_recent = true
+    }
+  }
+
+  eks_managed_node_group_defaults = {
+    ami_type = "AL2_x86_64"
+
+    # Needed by the aws-ebs-csi-driver
+    iam_role_additional_policies = {
+      AmazonEBSCSIDriverPolicy = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+    }
+  }
+
+  eks_managed_node_groups = var.eks_managed_node_groups
 }
 
-
+/*
 # https://aws.amazon.com/blogs/containers/amazon-ebs-csi-driver-is-now-generally-available-in-amazon-eks-add-ons/ 
 data "aws_iam_policy" "ebs_csi_policy" {
   arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
@@ -49,7 +63,7 @@ resource "aws_eks_addon" "ebs-csi" {
     "terraform" = "true"
   }
 }
-
+*/
 data "aws_eks_cluster" "default" {
   depends_on = [module.eks.cluster_name]
   name       = module.eks.cluster_name
