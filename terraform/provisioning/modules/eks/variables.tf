@@ -20,7 +20,3 @@ variable "subnet_ids" {
 variable "eks_managed_node_groups" {
   type = any
 }
-
-variable "eks_managed_node_group_defaults" {
-  type = any
-}
