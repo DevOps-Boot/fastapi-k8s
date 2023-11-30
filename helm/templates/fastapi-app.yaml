@@ -18,8 +18,22 @@ spec:
         - name: {{ .Values.fastapiApp.name }}
           image: {{ .Values.fastapiApp.image }}
           env:
+            - name: PGHOST
+              value: "fastapi-db" # Master postgres server's loadbalancer DNS name
+            - name: PGDATABASE
+              value: "fastapi_traefik"
+            - name: PGUSER
+              valueFrom:
+                secretKeyRef:
+                  name: fastapi-traefik.fastapi-db.credentials.postgresql.acid.zalan.do
+                  key: username
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: fastapi-traefik.fastapi-db.credentials.postgresql.acid.zalan.do
+                  key: password
             - name: DATABASE_URL
-              value: {{ .Values.fastapiApp.env.DATABASE_URL }}
+              value: "postgresql://$(PGUSER):$(PGPASSWORD)@$(PGHOST)/$(PGDATABASE)"
           resources:
             requests:
               memory: "32Mi"
