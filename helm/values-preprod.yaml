@@ -11,8 +11,6 @@ fastapiApp:
   name: "fastapi-app"
   image: "public.ecr.aws/v4m5s6o6/devops-boot:latest"
   containerPort: 8000
-  env:
-    DATABASE_URL: "postgresql://fastapi_traefik:fastapi_traefik@postgres-service:5432/fastapi_traefik"
 
 fastapiService:
   name: "fastapi-service"
@@ -22,29 +20,6 @@ fastapiHpa:
   minReplicas: 3
   maxReplicas: 6
   averageUtilization: 70
-
-# Postgres variables
-
-postgresDb:
-  name: "postgres-db"
-  image: "postgres:12.0-alpine"
-
-postgresConfig:
-  name: "postgres-config"
-  POSTGRES_USER: fastapi_traefik
-  POSTGRES_PASSWORD: fastapi_traefik
-  POSTGRES_DB: fastapi_traefik
-
-postgresPv:
-  name: "postgres-pv"
-  storage: 10Gi
-  path: "/mnt/data"
-
-postgresPvc:
-  name: "postgres-pvc"
-
-postgresService:
-  name: "postgres-service"
 
 clusterIssuer:
   name: "cluster-issuer"

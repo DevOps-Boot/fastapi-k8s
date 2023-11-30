@@ -1,3 +1,9 @@
+resource "kubernetes_namespace" "preprod" {
+  metadata {
+    name = "preprod"
+  }
+}
+
 module "storageclass" {
   # Setting up dynamic storageClass
   source = "../modules/storageclass"
