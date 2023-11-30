@@ -1,4 +1,4 @@
-resource "kubernetes_storage_class" "example" {
+resource "kubernetes_storage_class" "ebs-sc" {
   metadata {
     name = "ebs-sc"
     annotations = {

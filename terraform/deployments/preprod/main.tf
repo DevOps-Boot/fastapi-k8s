@@ -2,7 +2,13 @@ module "storageclass" {
   # Setting up dynamic storageClass
   source = "../modules/storageclass"
 }
-
+/*
+module "clusterissuer" {
+  # Setting up the clusterIssuer resource
+  source          = "../modules/clusterissuer"
+  cert_manager_id = module.releases.cert_manager_id
+}
+*/
 module "releases" {
   # Helm deployments that are independent of the enviroment
   source = "../releases"
