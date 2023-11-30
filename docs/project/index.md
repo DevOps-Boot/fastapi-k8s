@@ -2,11 +2,11 @@
 
 ## DevOps System Administrator
 
-### French State Professional Certificate [RNCP36061](https://www.francecompetences.fr/recherche/rncp/36061/)
+#### French State Professional Certificate [RNCP36061](https://www.francecompetences.fr/recherche/rncp/36061/)
 
 ## [DevOps Engineer Certificate](https://www.devuniversity.com/formation-devops)
 
-### [DevUniversity](https://www.devuniversity.com/), Sept. 2023 Bootcamp
+#### [DevUniversity](https://www.devuniversity.com/), Sept. 2023 Bootcamp
 
 ## Diploma Project
 
@@ -14,11 +14,11 @@
 
 [Introduction](introduction.md)
 
-[Implemented skills and competencies](competencies.md)
+[Project overview](overview/index.md)
 
 [Requirements and specifications](requirements/index.md)
 
-[Project planning](planning.md)
+[Implemented skills and competencies](skills.md)
 
 [Work situations](situations/index.md)
 
