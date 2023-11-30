@@ -32,6 +32,13 @@ Se positionner dans le dossier. Un nouveau dossier avec notre dépôt sera cré�
 `git clone https://github.com/DevOps-Boot/fastapi-k8s.git`
 ```
 
+Pour permettre les actions git commit et git pull, il est nécessaire de réaliser cette étape. Sinon, vous pouvez la sauter.
+```console
+$ git config --global user.email gjosephangelique@gmail.com
+$ git config --global user.name JoAngel8
+$ git status 
+```
+
 **Installation de terraform**
 
 
@@ -88,8 +95,9 @@ En france, nous avons choisi la région `eu-west-3`.
 Le format des sorties écrans de AWS se feront au format `json`. Vous pourriez le changer par le format `text`.
 
 **Charger les variables AWS**
-Nous pouvons chargés les variables dans notre environnement shell. Préciser le chemin du fichier .env si besoin :
-> *Notez: A relancer an cas de redémarrage*
+Nous pouvons chargés les variables dans notre environnement shell. Ce fichier est localisé à la racine du dépot. Préciser le chemin du fichier .env si besoin :
+> *Notez: A relancer an cas de redémarrage et dans différentes étapes de la procédure qui suit.*
+
 
 ```console
 `source .env` 
@@ -140,26 +148,52 @@ $ helm version
 version.BuildInfo{Version:"v3.13.1", GitCommit:"3547a4b5bf5edb5478ce352e18858d8a552a4110", GitTreeState:"clean", GoVersion:"go1.20.8"}
 ```
 
-
-
-
-
-
 ## Déployer l'environnement AWS CLOUD preprod
 
 ### Structure des dossiers
 ```console
 .
 ├── terraform
-│   ├── deployments
+│   ├── deployments     # Pour les applications
 │   │   ├── preprod
-│   └── provisioning
+│   └── provisioning    # Pour l'infrastructure
 │       └── preprod
 ```
 
-### Initialisation des fonctionnalités de terraform
-Lancer la commande ci-dessous. L'emplacement n'a pas d'imprtance.
+---- ETAPES A REVALIDER  ----
+### Déploiement de l'infrastructure : initialisation
+Lancer la commande ci-dessous. L'emplacement a de l'importance !
 
+
+L'infrastructure 
+```console
+$ cd fastapi-k8s/terraform/provisionning/preprod
+$ terraform init
+$ source .env
+--
+$ terraform apply -var=cluster_name=GaudryPreprod
+$ aws eks update-kubeconfig --region eu-west-3 --name GaudryPreprod --kubeconfig ~/.kube/devops-boot-preprod.config
+    Added new context arn:aws:eks:eu-west-3:424571028400:cluster/GaudryPreprod to /home/github/.kube/GaudryPreprod.config
+$ export KUBECONFIG=~/.kube/GaudryPreprod.config
+$ kubectl get service -n traefik
+```
+
+Les applications
+```console
+$ cd fastapi-k8s/terraform/deployments/preprod
+$ terraform init
+$ source .env
+--
+$ terraform apply -var=cluster_name=GaudryPreprod
+$ aws eks update-kubeconfig --region eu-west-3 --name GaudryPreprod --kubeconfig ~/.kube/devops-boot-preprod.config
+    Added new context arn:aws:eks:eu-west-3:424571028400:cluster/GaudryPreprod to /home/github/.kube/GaudryPreprod.config
+$ export KUBECONFIG=~/.kube/GaudryPreprod.config
+$ kubectl get service -n traefik
+```
+
+
+
+Voici ce qu'on obtient normalement avec la commande `terraform init` :
 ```console
 $ terraform init
 
@@ -288,7 +322,31 @@ exit
 ```
 
 ### Découvrons notre environnement déployé
-todo 
+
+Mettre à jour votre Serveur DNS (clouddns) avec une entrée CNAME A.
+Se connecter chez notre provider dns cloudns en ce qui nous concerne...  
+```console
+  Cloudns.net = 
+        CNAME A 
+        HOST = devops-fastapi-staging.kvark.fr
+        Points to = a8ec399d1b379465694ee0617c6f4615-1104f5c6d7d11296.elb.eu-west-3.amazonaws.com 
+```
+
+Alors, avec un serveur DNS qui sera en mesure de valider l'url à traefik et cert-manager. 
+Cert manager va prendre en compte l'url et va valider en HTTPS (package HELM).
+Sans CNAME A, traefik vous refusera l'accès avec une erreur 404.
+
+Ouvrir le Browser
+```console
+http://devops-fastapi-staging.kvark.fr
+https://devops-fastapi-staging.kvark.fr
+```
+
+Résutat attendu:
+```console
+[{"id":1,"email":"test@test.com","active":true}]
+```
+
 
 ### Desinstallation de notre environnement
 Pour des questions de budget et parce que nous pourrons lorsque nous en aurons selon nos besoins rejouer toute cette procédure, nons allons supprimer l'ensemble des ressources créées dans aws cloud. 
