@@ -10,3 +10,9 @@ resource "helm_release" "cert_manager" {
     value = true
   }
 }
+
+resource "helm_release" "cluster_issuer" {
+  name       = "cluster-issuer"
+  chart      = "${path.module}/clusterissuer"
+  depends_on = [helm_release.cert_manager]
+}

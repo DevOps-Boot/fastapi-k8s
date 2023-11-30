@@ -48,7 +48,3 @@ postgresService:
 
 clusterIssuer:
   name: "cluster-issuer"
-  email: "github@kvark.fr"
-  server: "https://acme-v02.api.letsencrypt.org/directory" # prod server, used in preprod and prod
-  privateKeySecretRef:
-    name: "letsencrypt-prod"
