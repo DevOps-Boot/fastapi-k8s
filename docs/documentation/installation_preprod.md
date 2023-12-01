@@ -21,6 +21,7 @@ Cette procédure décrit l'installation des outils nécessaires sous Linux pour 
 
 **Installation de dépendances**
 Ouvrez un terminal et exécutez les commandes suivantes pour installer Git, Unzip, et Tree
+
 ```console
 sudo apt install -y git-all`
 sudo apt-get install -y install-info`
@@ -28,32 +29,34 @@ sudo apt-get install -y unzip tree                 # Pour aws
 sudo apt-get install -y gpg apt-transport-https    # Pour terraform
 ```
 
-**Cloner le dépôt Github du projets**
+**Cloner le dépôt Github du projet*
 Se positionner dans le dossier. Un nouveau dossier avec notre dépôt sera créé.
 
 ```console
 git clone https://github.com/DevOps-Boot/fastapi-k8s.git
 cd NomDuDepot
 ```
+
 **Configuration de git**
 Pour permettre les actions git commit et git pull, il est nécessaire de réaliser cette étape. Sinon, vous pouvez la sauter.
 Saisissez les informations de votre compte github.
+
 ```console
-$ git config --global user.email VotreAdresseeMail@MonDomaine.com
-$ git config --global user.name VotrePseudoGithub
-$ git status 
+git config --global user.email VotreAdresseeMail@MonDomaine.com
+git config --global user.name VotrePseudoGithub
+git status 
 ```
 
 **Installation de terraform**
-
-
+Installez terraform: 
 ```console
 wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install terraform
 ```
 
-Vérifier 
+Vérifier l'installation de Terraform
+
 ```console
 $ terraform --version
 Terraform v1.6.5
@@ -64,6 +67,7 @@ on linux_amd64
 Method : Using the AWS setup script
 we will download the 64 bits aws cli version
 
+Installez AWS CLI: 
 ```console
 sudo apt update
 curl -X GET "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -83,61 +87,60 @@ By default, `aws cli` is installed in **/usr/local/aws-cli** as well as a sy
 
 **Gerer l'accès AWS**
 
-Créer un nouveau fichier `.env` ou le compléter. 
+Créer un nouveau fichier `.env` ou le compléter.
 Ce fichier contient les accès AWS. (.env ajouté au fichier .gitignore du dépots)
 
-
 Voicì le contenu à ajouter:
+
 ```console
 AWS_ACCESS_KEY_ID="votre_aws_access_key_id"
 AWS_SECRET_ACCESS_KEY="votre_aws_secret_access_key"
 AWS_DEFAULT_REGION="eu-west-3"
 AWS_DEFAULT_OUTPUT="json"
 ```
+
 Ces informations sont remplaces la commande `aws configure` que nous remplissions manuellement.
-En france, nous avons choisi la région `eu-west-3`. 
+En france, nous avons choisi la région `eu-west-3`.
 Le format des sorties écrans de AWS se feront au format `json`. Vous pourriez le changer par le format `text`.
 
 **Charger les variables AWS**
 Nous pouvons chargés les variables dans notre environnement shell. Ce fichier est localisé à la racine du dépot. Préciser le chemin du fichier .env si besoin :
 > *Notez: A relancer an cas de redémarrage et dans différentes étapes de la procédure qui suit.*
 
-
 ```console
 `source .env` 
 ```
 
-
 **Vérifions le contenu des variables AWS**
-Vous devriez avoir la valeur de la variable qui s'affiche à votre écran. 
+Vous devriez avoir la valeur de la variable qui s'affiche à votre écran.
 
 ```console
 echo $AWS_DEFAULT_REGION
 ```
 
-**installation de k3s**
-Cette installation de kubernetes inclut le module ETCD.
+**installation de kubectl**
+On installe l'outil kubectl
 
 ```console
-curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server --cluster-init
-sudo chmod 644 /etc/rancher/k3s/k3s.yaml
+sudo apt-get update
+sudo apt-get install -y apt-transport-https ca-certificates curl
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt-get install -y kubectl
 ```
 
 Vérifier
+
 ```console
 $ kubectl version --short
-Flag --short has been deprecated, and will be removed in the future. The --short output will become the default.
-Client Version: v1.27.7+k3s2
-Kustomize Version: v5.0.1
-Server Version: v1.27.7+k3s2
+```
 
 $ kubectl get nodes
 NAME         STATUS   ROLES                       AGE     VERSION
 aws-rncp01   Ready    control-plane,etcd,master   3m16s   v1.27.7+k3s2
-```
 
 **Installation de Helm**
-
 
 ```console
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
@@ -147,6 +150,7 @@ rm get_helm.sh
 ```
 
 Vérifier
+
 ```console
 $ helm version
 version.BuildInfo{Version:"v3.13.1", GitCommit:"3547a4b5bf5edb5478ce352e18858d8a552a4110", GitTreeState:"clean", GoVersion:"go1.20.8"}
@@ -154,7 +158,12 @@ version.BuildInfo{Version:"v3.13.1", GitCommit:"3547a4b5bf5edb5478ce352e18858d8a
 
 ## Déployer l'environnement AWS CLOUD preprod
 
+Nous utilisons terraform cli pour les étapes qui vont suivre.
+
 ### Structure des dossiers
+
+Voici les dossiers dans lequel nous nous situerons pour lancer nos différentes commandes.
+
 ```console
 .
 ├── terraform
@@ -164,42 +173,153 @@ version.BuildInfo{Version:"v3.13.1", GitCommit:"3547a4b5bf5edb5478ce352e18858d8a
 │       └── preprod
 ```
 
----- ETAPES A REVALIDER  ----
-### Déploiement de l'infrastructure : initialisation
-Lancer la commande ci-dessous. L'emplacement a de l'importance !
+### Déploiement de l'infrastructure
 
+**Initialisation de Terraform**
+Initialisez Terraform pour préparer votre environnement de déploiement. Cela télécharge les modules nécessaires et prépare les providers.
 
-L'infrastructure 
+Se positionner dans le dossier
+
 ```console
-$ cd fastapi-k8s/terraform/provisionning/preprod
+$ cd ./terraform/provisioning/preprod
 $ terraform init
-$ terraform plan
-$ source .env
---
-$ terraform apply -var=cluster_name=GaudryPreprod
-$ aws eks update-kubeconfig --region eu-west-3 --name GaudryPreprod --kubeconfig ~/.kube/devops-boot-preprod.config
-    Added new context arn:aws:eks:eu-west-3:424571028400:cluster/GaudryPreprod to /home/github/.kube/GaudryPreprod.config
-$ export KUBECONFIG=~/.kube/GaudryPreprod.config
-$ kubectl get service -n traefik
+    [...]
+    Terraform has been successfully initialized!
 ```
 
-Les applications
+**Déployer**
+Vous pouvez personnaliser le nom de votre cluster en remplacant cette information"GaudryPreprod"
+Temps de chargement, d'attente: 10 minutes environ.
+
+```console
+terraform apply -var=cluster_name=GaudryPreprod
+    Plan: 55 to add, 0 to change, 0 to destroy.
+
+    Do you want to perform these actions?
+    Terraform will perform the actions described above.
+    Only 'yes' will be accepted to approve.
+
+    Enter a value: yes 
+```
+
+* Terraform demandera une confirmation. Tapez yes pour procéder à l'installation de l'infrastructure.
+
+Update kubeconfig
+Afin d'utiliser les commandes kubectl
+
+```console
+aws eks update-kubeconfig --region eu-west-3 --name GaudryPreprod --kubeconfig ~/.kube/GaudryPreprod.config
+export KUBECONFIG=~/.kube/GaudryPreprod.config
+
+```
+
+**Vérifier**
+
+kubectl
+Avec les commandes locale, nous pouvons interroger l'api AWS EKS pour obtenir des information de notre infra cloud. Utilisons `kubectl`
+
+```console
+kubectl get pods
+```
+
+AWS Management Console
+La console vous permet de visualiser les ressources créées.  
+
+### Déployer les applications dans AWS CLOUD
+
 ```console
 $ cd fastapi-k8s/terraform/deployments/preprod
 $ terraform init
-$ terraform plan
-$ source .env
---
+$ terraform plan # optionnel
 $ terraform apply -var=cluster_name=GaudryPreprod
-$ aws eks update-kubeconfig --region eu-west-3 --name GaudryPreprod --kubeconfig ~/.kube/devops-boot-preprod.config
-    Added new context arn:aws:eks:eu-west-3:424571028400:cluster/GaudryPreprod to /home/github/.kube/GaudryPreprod.config
-$ export KUBECONFIG=~/.kube/GaudryPreprod.config
+    Plan: 4 to add, 0 to change, 0 to destroy.
+
+    Do you want to perform these actions?
+    Terraform will perform the actions described above.
+    Only 'yes' will be accepted to approve.
+
+    Enter a value: yes 
 $ kubectl get service -n traefik
 ```
 
+* Terraform demandera une confirmation. Tapez yes pour procéder au déploiement des applications.
 
+### Vérifications Post-Déploiement
+
+Vérifiez l'infrastructure :
+
+```console
+terraform output
+aws ec2 describe-instances --query "Reservations[*].Instances[*].PublicIpAddress"
+```
+
+### Accéder à l'Application avec votre navifateur web
+
+Mettre à jour votre Serveur DNS (clouddns) avec une entrée CNAME A.
+Le nom de domaine de load-balancer correspond à l'adresse "external ip" de notre resource "traefik":
+
+```console
+$ kubectl get service -n traefik
+  NAME      TYPE           CLUSTER-IP       EXTERNAL-IP                                                                     PORT(S)                      AGE
+  traefik   LoadBalancer   172.20.125.173   a8ec399d1b379465694ee0617c6f4615-1104f5c6d7d11296.elb.eu-west-3.amazonaws.com   80:30265/TCP,443:31119/TCP   3m59s
+```
+
+Se connecter chez notre provider dns, cloudns, en ce qui nous concerne...  
+
+```console
+  Cloudns.net = 
+        CNAME A 
+        HOST = devops-fastapi-staging.kvark.fr
+        Points to = a8ec399d1b379465694ee0617c6f4615-1104f5c6d7d11296.elb.eu-west-3.amazonaws.com 
+```
+
+Alors, avec un serveur DNS qui sera en mesure de valider l'url à traefik et cert-manager.
+Cert manager va prendre en compte l'url et va valider en HTTPS (package HELM).
+Sans CNAME A, traefik vous refusera l'accès avec une erreur 404.
+
+Ouvrir le Browser
+
+```console
+http://devops-fastapi-staging.kvark.fr
+https://devops-fastapi-staging.kvark.fr
+```
+
+Résutat attendu:
+
+```console
+[{"id":1,"email":"test@test.com","active":true}]
+```
+
+### Gestion des Modifications
+Pour des modifications, ajustez les fichiers de configuration et répétez les étapes de planification et d'application avec Terraform.
+
+### Desinstallation de notre environnement
+
+Suppression de l'infrastructure : Lorsque vous n'avez plus besoin de l'infrastructure, utilisez Terraform pour la détruire proprement et éviter des coûts inutiles.
+
+```console
+$ terraform destroy -var=cluster_name=GaudryPreprod
+    Plan: 0 to add, 0 to change, 55 to destroy.
+
+    Do you really want to destroy all resources?
+    Terraform will destroy all your managed infrastructure, as shown above.
+    There is no undo. Only 'yes' will be accepted to confirm.
+
+    Enter a value: yes 
+```
+
+* Terraform demandera une confirmation. Tapez yes pour procéder à la suppression.
+
+---
+
+# Annexe 01
+
+## Résultat d'une commande `terraform init`
+
+---
 
 Voici ce qu'on obtient normalement avec la commande `terraform init` :
+
 ```console
 $ terraform init
 
@@ -254,120 +374,3 @@ $ terraform init
     rerun this command to reinitialize your working directory. If you forget, other
     commands will detect it and remind you to do so if necessary.
 ```
-
-**Charger les variables AWS**
-Nous pouvons chargés les variables dans notre environnement shell. Préciser le chemin du fichier .env si besoin :
-> *Notez: A relancer an cas de redémarrage*
-> *La commande manuelle équivalente:* `aws configure`
-
-```console
-`source .env` 
-```
-
-
-### Déploiement de l'infrastructure 
-
-Se positionner dans le dossier 
-```console
-$ cd ./terraform/provisioning/preprod
-$ terraform init
-    Plan: 4 to add, 0 to change, 0 to destroy.
-
-    Do you want to perform these actions?
-    Terraform will perform the actions described above.
-    Only 'yes' will be accepted to approve.
-
-    Enter a value: yes 
-```
-
-Déployer
-Vous pouvez personnaliser le nom de votre cluster en remplacant cette information"GaudryPreprod"
-Temps de chargement, d'attente: 10 minutes environ. 
-```console
-terraform apply -var=cluster_name=GaudryPreprod
-```
-
-
-
-Update kubeconfig
-Afin d'utiliser les commandes kubectl
-
-```console
-aws eks update-kubeconfig --region eu-west-3 --name GaudryPreprod --kubeconfig ~/.kube/GaudryPreprod.config
-export KUBECONFIG=~/.kube/GaudryPreprod.config
-
-```
-
-Vérifier
-```console
-kubectl get service -n traefik
-```
-
-### Déployer les applications dans AWS CLOUD
-
-**Paramétrage kube config**
-
-Sur le compte utilisateur actif
-
-```console
-mkdir -p $HOME/.kube
-sudo chmod 777 $HOME/.kube
-sudo chown -R $USER:$USER $HOME/.kube
-kubectl config view --raw > $HOME/.kube/config
-```
-
-Sur le compte root
-
-```console
-sudo -i
-mkdir -p $HOME/.kube
-sudo chmod 777 $HOME/.kube
-sudo chown -R $USER:$USER $HOME/.kube
-kubectl config view --raw > $HOME/.kube/config
-exit
-```
-
-### Découvrons notre environnement déployé
-
-Mettre à jour votre Serveur DNS (clouddns) avec une entrée CNAME A.
-Se connecter chez notre provider dns cloudns en ce qui nous concerne...  
-```console
-  Cloudns.net = 
-        CNAME A 
-        HOST = devops-fastapi-staging.kvark.fr
-        Points to = a8ec399d1b379465694ee0617c6f4615-1104f5c6d7d11296.elb.eu-west-3.amazonaws.com 
-```
-
-Alors, avec un serveur DNS qui sera en mesure de valider l'url à traefik et cert-manager. 
-Cert manager va prendre en compte l'url et va valider en HTTPS (package HELM).
-Sans CNAME A, traefik vous refusera l'accès avec une erreur 404.
-
-Ouvrir le Browser
-```console
-http://devops-fastapi-staging.kvark.fr
-https://devops-fastapi-staging.kvark.fr
-```
-
-Résutat attendu:
-```console
-[{"id":1,"email":"test@test.com","active":true}]
-```
-
-### Desinstallation de notre environnement
-Suppression de l'infrastructure : Lorsque vous n'avez plus besoin de l'infrastructure, utilisez Terraform pour la détruire proprement et éviter des coûts inutiles.
-
-```console
-$ terraform destroy -var=cluster_name=GaudryPreprod
-    Plan: 0 to add, 0 to change, 55 to destroy.
-
-    Do you really want to destroy all resources?
-    Terraform will destroy all your managed infrastructure, as shown above.
-    There is no undo. Only 'yes' will be accepted to confirm.
-
-    Enter a value: yes 
-```
-
-
-
-
-
