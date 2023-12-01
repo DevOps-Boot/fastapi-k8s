@@ -10,7 +10,7 @@ env:
   TF_CLOUD_ORGANIZATION: "devops-boot"
   TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
   TF_WORKSPACE: "provisioning-preprod"
-  CONFIG_DIRECTORY: "terraform/provisioning/preprod"
+  CONFIG_DIRECTORY: "./"
 
 jobs:
   terraform:
