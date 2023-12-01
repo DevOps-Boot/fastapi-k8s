@@ -16,7 +16,6 @@ env:
 
 jobs:
   terraform:
-    if: github.repository != 'hashicorp-education/learn-terraform-github-actions'
     name: "Terraform Provisioning Preprod Apply"
     runs-on: ubuntu-latest
     permissions:
