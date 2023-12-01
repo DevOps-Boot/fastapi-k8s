@@ -8,34 +8,39 @@ La création des fichiers de configuration qui contiennent les caractéristiques
 
 Nous gérons et approvisionnons l’infrastructure à l’aide de ligne de code plutôt que par des processus manuel désormais. (Infrastructure-as-Code).
 
+Cette procédure décrit l'installation des outils nécessaires sous Linux pour déployer une infrastructure AWS et des applications en utilisant Terraform, basée sur des configurations stockées dans un dépôt GitHub.
+
 ## Prérequis
 
-* Une machine Linux
+* Machine Linux
 * Accès Internet
-* Un utilisateur avec un accès administrateur
-* Compte AWS AMI, avec privilèges.
+* Accès administrateur sur la machine
+* Compte AWS (IAM), avec privilèges adéquats.
 
 ## Preparation de l'environnement
 
 **Installation de dépendances**
-
+Ouvrez un terminal et exécutez les commandes suivantes pour installer Git, Unzip, et Tree
 ```console
 sudo apt install -y git-all`
-sudo apt-get install install-info`
-sudo apt install unzip tree
+sudo apt-get install -y install-info`
+sudo apt-get install -y unzip tree                 # Pour aws
+sudo apt-get install -y gpg apt-transport-https    # Pour terraform
 ```
 
 **Cloner le dépôt Github du projets**
 Se positionner dans le dossier. Un nouveau dossier avec notre dépôt sera créé.
 
 ```console
-`git clone https://github.com/DevOps-Boot/fastapi-k8s.git`
+git clone https://github.com/DevOps-Boot/fastapi-k8s.git
+cd NomDuDepot
 ```
-
+**Configuration de git**
 Pour permettre les actions git commit et git pull, il est nécessaire de réaliser cette étape. Sinon, vous pouvez la sauter.
+Saisissez les informations de votre compte github.
 ```console
-$ git config --global user.email gjosephangelique@gmail.com
-$ git config --global user.name JoAngel8
+$ git config --global user.email VotreAdresseeMail@MonDomaine.com
+$ git config --global user.name VotrePseudoGithub
 $ git status 
 ```
 
@@ -43,7 +48,6 @@ $ git status
 
 
 ```console
-sudo apt-get install -y gpg apt-transport-https
 wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install terraform
@@ -169,6 +173,7 @@ L'infrastructure
 ```console
 $ cd fastapi-k8s/terraform/provisionning/preprod
 $ terraform init
+$ terraform plan
 $ source .env
 --
 $ terraform apply -var=cluster_name=GaudryPreprod
@@ -182,6 +187,7 @@ Les applications
 ```console
 $ cd fastapi-k8s/terraform/deployments/preprod
 $ terraform init
+$ terraform plan
 $ source .env
 --
 $ terraform apply -var=cluster_name=GaudryPreprod
@@ -347,9 +353,8 @@ Résutat attendu:
 [{"id":1,"email":"test@test.com","active":true}]
 ```
 
-
 ### Desinstallation de notre environnement
-Pour des questions de budget et parce que nous pourrons lorsque nous en aurons selon nos besoins rejouer toute cette procédure, nons allons supprimer l'ensemble des ressources créées dans aws cloud. 
+Suppression de l'infrastructure : Lorsque vous n'avez plus besoin de l'infrastructure, utilisez Terraform pour la détruire proprement et éviter des coûts inutiles.
 
 ```console
 $ terraform destroy -var=cluster_name=GaudryPreprod
