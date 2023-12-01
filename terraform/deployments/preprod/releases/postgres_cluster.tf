@@ -1,8 +1,8 @@
 resource "helm_release" "postgres_cluster" {
   name             = "postgres-cluster"
-  chart            = "${path.module}/../../../../postgres"
+  chart            = "${path.module}/../../../../helm/postgres"
   create_namespace = true
   values = [
-    file("${path.module}/../../../../postgres/values-preprod.yaml")
+    file("${path.module}/../../../../helm/postgres/values-preprod.yaml")
   ]
 }
