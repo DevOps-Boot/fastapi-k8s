@@ -3,6 +3,7 @@ kind: ConfigMap
 metadata:
   name: pod-config
 data:
+  # Backup definition
   WAL_S3_BUCKET: devops-boot-s3backup
   WAL_BUCKET_SCOPE_PREFIX: ""
   WAL_BUCKET_SCOPE_SUFFIX: ""
@@ -14,6 +15,8 @@ data:
   AWS_REGION: us-east-1
   WALG_DISABLE_S3_SSE: "true"
   BACKUP_NUM_TO_RETAIN: "5"
+
+  # Auto restore at cluster initiation
   CLONE_USE_WALG_RESTORE: "true"
   CLONE_AWS_ACCESS_KEY_ID: {{ .Values.s3_backup_aws_access_key_id }}
   CLONE_AWS_SECRET_ACCESS_KEY: {{ .Values.s3_backup_aws_secret_access_key }}
@@ -21,4 +24,3 @@ data:
   CLONE_METHOD: CLONE_WITH_WALE
   CLONE_WAL_BUCKET_SCOPE_PREFIX: ""
   CLONE_WAL_S3_BUCKET: devops-boot-s3backup
-  CLONE_SCOPE: fastapi-db

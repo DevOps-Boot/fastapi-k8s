@@ -1,7 +1,7 @@
 kind: "postgresql"
 apiVersion: "acid.zalan.do/v1"
 metadata:
-  name: "fastapi-db"
+  name: "fastapi-db" # Cluster name
   namespace: {{ .Values.namespace }}
   labels:
     team: acid
@@ -10,19 +10,19 @@ spec:
   postgresql:
     version: "15"
   numberOfInstances: 3
-  enableMasterLoadBalancer: false
+  enableMasterLoadBalancer: false # We don't want publish the cluster.
   enableReplicaLoadBalancer: false
   volume:
     size: "10Gi"
     storageClass: "ebs-sc"
   users:
-    fastapi_traefik:
-      - superuser
-      - createdb
+    fastapi_traefik: # User fastapi_traefik has superuser and create DB privileges
+      - superuser # Super user privilege
+      - createdb # Create DB privilege
   allowedSourceRanges:
     - 10.0.0.0/16
   databases:
-    fastapi_traefik: fastapi_traefik
+    fastapi_traefik: fastapi_traefik # User fastapi_traefik has full access to DB fastapi_traefik
   resources:
     requests:
       cpu: 100m
@@ -30,3 +30,6 @@ spec:
     limits:
       cpu: 500m
       memory: 500Mi
+  env:
+    - name: CLONE_SCOPE
+      value: fastapi-db
