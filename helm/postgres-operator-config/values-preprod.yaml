@@ -1,2 +1,2 @@
-aws_access_key_id: "tobechanged"
-aws_secret_access_key: "tobechanged"
+s3_backup_aws_access_key_id: "tobechanged"
+s3_backup_aws_secret_access_key: "tobechanged"

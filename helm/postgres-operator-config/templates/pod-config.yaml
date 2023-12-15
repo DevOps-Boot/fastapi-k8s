@@ -9,14 +9,14 @@ data:
   USE_WALG_BACKUP: "true"
   USE_WALG_RESTORE: "true"
   BACKUP_SCHEDULE: '00 12 * * *'
-  AWS_ACCESS_KEY_ID: {{ .Values.aws_access_key_id }}
-  AWS_SECRET_ACCESS_KEY: {{ .Values.aws_secret_access_key }}
+  AWS_ACCESS_KEY_ID: {{ .Values.s3_backup_aws_access_key_id }}
+  AWS_SECRET_ACCESS_KEY: {{ .Values.s3_backup_aws_secret_access_key }}
   AWS_REGION: us-east-1
   WALG_DISABLE_S3_SSE: "true"
   BACKUP_NUM_TO_RETAIN: "5"
   CLONE_USE_WALG_RESTORE: "true"
-  CLONE_AWS_ACCESS_KEY_ID: {{ .Values.aws_access_key_id }}
-  CLONE_AWS_SECRET_ACCESS_KEY: {{ .Values.aws_secret_access_key }}
+  CLONE_AWS_ACCESS_KEY_ID: {{ .Values.s3_backup_aws_access_key_id }}
+  CLONE_AWS_SECRET_ACCESS_KEY: {{ .Values.s3_backup_aws_secret_access_key }}
   CLONE_AWS_REGION: us-east-1
   CLONE_METHOD: CLONE_WITH_WALE
   CLONE_WAL_BUCKET_SCOPE_PREFIX: ""
