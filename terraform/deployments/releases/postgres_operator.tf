@@ -18,11 +18,11 @@ resource "helm_release" "postgres_operator_config" {
   name  = "postgres-operator-config"
   chart = "${path.module}/../../../helm/postgres-operator-config"
   set {
-    name  = "aws_access_key_id"
+    name  = "s3_backup_aws_access_key_id"
     value = var.s3_backup_aws_access_key_id
   }
   set {
-    name  = "aws_secret_access_key"
+    name  = "s3_backup_aws_secret_access_key"
     value = var.s3_backup_aws_secret_access_key
   }
 }
