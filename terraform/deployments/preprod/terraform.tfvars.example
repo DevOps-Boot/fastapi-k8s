@@ -1,4 +1,9 @@
+# Secret keys to get access to AWS and deploy our infrastructure
 AWS_ACCESS_KEY_ID = aws_key_id
 AWS_SECRET_ACCESS_KEY = aws_key
+
+# Secret keys used to grant access for postgres backups into our S3 bucket in us-east-1
+TF_VAR_s3_backup_aws_access_key_id = s3_backup_aws_access_key_id
+TF_VAR_s3_backup_aws_secret_access_key = s3_backup_aws_secret_access_key
 
 # These values need to be set as enviromental secrets in Terraform Cloud.

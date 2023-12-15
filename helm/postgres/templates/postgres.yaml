@@ -10,8 +10,8 @@ spec:
   postgresql:
     version: "15"
   numberOfInstances: 3
-  enableMasterLoadBalancer: true
-  enableReplicaLoadBalancer: true
+  enableMasterLoadBalancer: false
+  enableReplicaLoadBalancer: false
   volume:
     size: "10Gi"
     storageClass: "ebs-sc"
