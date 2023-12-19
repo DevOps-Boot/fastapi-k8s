@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: postgres-operator
-data:
-  pod_environment_configmap: "pod-config"
