@@ -1,5 +1,35 @@
 Plan de sauvegarde
 =======
+
+# Contexte 
+
+Toutes les informations importantes sont réparties de la façon suivante :
+
+Dans Github, nous avons un réfrentiel qui contient 
+* les différents manifestes qui composent notre Infrastructure As Code (IaC) déployés sur AWS.
+* les pipelines CI/CD
+* le code de notre application FastAPI
+
+Dans AWS ECR, notre image de l'application Docker est générée dynamiquement à partir des manifestes présents sur GitHub.
+
+Dans Terraform Cloud, l'état de notre déploiement dans le cloud AWS est géré, stocké, sauvegardé par le service Terraform Cloud. Dans une entreprise nous aurions sauvegardé et externalisé dans un AWS bucket S3 par exemple, toutefois dans le cadre de notre projet nous confions la sauvegarde à Terraform Cloud. 
+
+Dans la base de données PostgreSQL, sont stockées les données utilisées par notre application FastAPI
+
+# Notre choix
+
+En conséquences notre plan de sauvegarde sera focalisé sur les données de FastAPI qui seront localisées dans la base de données PostgreSQL. 
+D'une part parce que nous faisons confiances à Github pour le périmètre de notre projet. D'autre part, nous disposons d'un clone du projet sur nos machines. 
+Dans une entreprise, nous aurions eu plus de temps pour envisager d'utiliser un outil tiers pour sauvegarder notre référentiel. 
+ 
+Notre application FastAPI est immuable grâce à l'utilisation des images docker. 
+Les sauvagardes des fichiers dans les pods n'est donc pas nécessaire. 
+
+# Choix de l'outil de sauvegarde de la base de données.
+
+Nous utilisons les capacités de notre postgres-operateur pour créer des sauvergardes automatiques dans un bucket S3 dans une régions us-east-1.
+Nous allons donc précisé dans la documentation l'impémentation de l'outil. 
+
 ---
 
 
