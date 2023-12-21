@@ -67,19 +67,22 @@ Ce rôle se différentie de notre accès IAM principal car il aura des privilèg
 * il aura **accès uniquement au Bucket S3**,
 * ses **permissions seront défines au stricte nécessaire** pour préserver les données en cas d'attaque.
 
-**Procédure**
+#### Procédure
 
-* Ouvrir le Console "Identity and Access Management (IAM)"
-* Région Paris
-* Selectionner Gestion des accès / Utilisateurs
-* Bouton Créer un utilisateur
+- Ouvrir le Console "Identity and Access Management (IAM)"
+- Région Paris
+- Selectionner Gestion des accès / Utilisateurs
+- Bouton Créer un utilisateur
+
   * Nommer l'utilisateur (le nom n'a pas d'importance) : eks-srvuser
   * Pas d'accès console nécessaire, ne pas cocher.
   * Sélectionner "Ajouter un utilisateur à un groupe", suivant
   * Bouton "Créer un utilisateur"
 
-* Selectionner l'utilisateur créé
+- Selectionner l'utilisateur créé
+
   * **Relever la reférence ARN**
+
 
 ### 1.3 Générer la clé d'accès du rôle IAM
 
