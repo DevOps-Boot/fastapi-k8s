@@ -88,7 +88,7 @@ Ce rôle se différentie de notre accès IAM principal car il aura des privilèg
 
 La clé d'accès du rôle IAM est la methode d'authentification utilisée afin de permettre  l'accès au Bucket S3. Cette information sera ensuite renseignée dans les manifestes helm postgres.
 
-**Procédure**
+#### Procédure
 
 * Poursuivons dans la même fenêtre
   * selectionner l'onglet: "Information d'identification de sécurité"
