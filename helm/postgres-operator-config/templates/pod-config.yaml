@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: pod-config
+  name: postgres-operator-pod-config
 data:
   # Backup definition
   WAL_S3_BUCKET: devops-boot-s3backup

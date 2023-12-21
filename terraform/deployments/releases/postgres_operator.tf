@@ -4,14 +4,9 @@ resource "helm_release" "postgres_operator" {
   chart      = "postgres-operator"
   version    = "v1.10.1"
   depends_on = [helm_release.postgres_operator_config]
-  set {
-    name  = "configKubernetes.pod_environment_configmap"
-    value = "pod-config"
-  }
-  set {
-    name  = "configAwsOrGcp.aws_region"
-    value = "us-east-1"
-  }
+  values = [
+    file("${path.module}/postgres-operator/postgres-operator-values.yaml")
+  ]
 }
 
 resource "helm_release" "postgres_operator_config" {
