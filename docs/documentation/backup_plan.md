@@ -150,7 +150,7 @@ Poursuivons dans la même fenêtre:
   - Copier / Coller du code dans notre espace Bucket Policy.
   - Bouton "Save changes"
 
-Maintenant, nous avons autorisé au principal de pouvoir accéder au Bucket. Notre utilisateur a maintenant accès au Bucket.
+Désormais, notre utilisateur ("principal") a accès au Bucket.
 
 > Contrainte, il est nécessaire d'adapter avec nos besoins (niveau d'accès, quelle ressources) et nos données spécifiques en l'occurence les informations que nous avons relevés plus tôt dans notre démarche.
 
