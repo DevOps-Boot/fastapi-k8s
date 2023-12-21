@@ -108,16 +108,19 @@ Les buckets S3 permettent une combinaison de classes de stockage qui stockent de
 
 On utilise pas `Object lock` ou `chiffrement par défaut` pour simplifier notre installation, mais avec Object Lock nous pouvons préciser pendant combien de temps les objets ne peuvent pas être modifié. En cas d’attaque, les objets seront sécurisés et conserveront leurs intégrités. Les données reste fiable et accessible.  
 
-**Procédure**
+#### Procédure
 
-* Ouvrir le Console "Amazon S3"
-* Bouton "Créer un compartiment" ou "Bucket"
-* Région AWS, selectionner USA Est (Californie du Nord) us-east-1
-* Type: "usage général"
-* Nom du compartiement (bucket name): "devops-boot-s3backup", Atttention, il doit être unique dans l'espace de nommage global!
-* Le type de chiffrement par défaut (Objet lock): "Chiffrement côté serveur avec des clés gérées par Amazon S3 (SSE-S3)"
-* Section Clé de compartiement: "Désactivée"
-* Bouton: "Créer un compartiement"
+- Ouvrir le Console "Amazon S3"
+- Bouton "Créer un compartiment" ou "Bucket"
+- Région AWS, selectionner USA Est (Californie du Nord) us-east-1
+- Type: "usage général"
+- Nom du compartiement (bucket name): "devops-boot-s3backup".
+
+  Atttention, il doit être **unique** dans l'espace de nommage global!
+
+- Le type de chiffrement par défaut (Objet lock): "Chiffrement côté serveur avec des clés gérées par Amazon S3 (SSE-S3)"
+- Section Clé de compartiement: "Désactivée"
+- Bouton: "Créer un compartiement"
 
 Une fois créé, afficher les détails du bucket "devops-boot-s3backup"
 
