@@ -52,11 +52,11 @@ Nous allons donc précisé dans la documentation l'impémentation de l'outil.
 
 ### Prérequis
 
-Accéder au site (https://aws.amazon.com/fr/console/)
-se connecter en tant qu'utilisarteur IAM, avec notre compte (ID de compte, Nom d'utilisateur, mot de passe)
-Se positionner sur la région de
-* Paris pour gérer le service IAM
-* Californie pour le service S3. (limitation de notre compte IAM Datascientest)
+- Accéder au site (https://aws.amazon.com/fr/console/)
+- Se connecter en tant qu'utilisarteur IAM, avec notre compte (ID de compte, Nom d'utilisateur, mot de passe)
+- Se positionner sur la région de
+  * Paris pour gérer le service IAM
+  * Californie pour le service S3. (limitation de notre compte IAM Datascientest)
 
 ### 1.2 Création d'un compte utilisateur
 
