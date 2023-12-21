@@ -177,6 +177,7 @@ Il est maintenant nécessaire d'adapter la politique générée à nos besoins (
 ```
 ***Règle JSON personnalisée attribuée au compartiement (JSON Bucket policy)***
 
+
 ### 2.1 - Installer et utiliser K9S pour superviser Kubernetes
 
 **A developper** ..
