@@ -1,7 +1,7 @@
-Plan de sauvegarde
+# Plan de sauvegarde
 =======
 
-# Contexte 
+## Contexte 
 
 Toutes les informations importantes sont réparties de la façon suivante :
 
@@ -16,7 +16,7 @@ Dans Terraform Cloud, l'état de notre déploiement dans le cloud AWS est géré
 
 Dans la base de données PostgreSQL, sont stockées les données utilisées par notre application FastAPI
 
-# Notre choix
+## Notre choix
 
 En conséquences notre plan de sauvegarde sera focalisé sur les données de FastAPI qui seront localisées dans la base de données PostgreSQL. 
 D'une part parce que nous faisons confiances à Github pour le périmètre de notre projet. D'autre part, nous disposons d'un clone du projet sur nos machines. 
@@ -25,13 +25,17 @@ Dans une entreprise, nous aurions eu plus de temps pour envisager d'utiliser un 
 Notre application FastAPI est immuable grâce à l'utilisation des images docker. 
 Les sauvagardes des fichiers dans les pods n'est donc pas nécessaire. 
 
-# Choix de l'outil de sauvegarde de la base de données.
+### Choix de l'outil de sauvegarde de la base de données.
 
 Nous utilisons les capacités de notre postgres-operateur pour créer des sauvergardes automatiques dans un bucket S3 dans une régions us-east-1.
-Nous allons donc précisé dans la documentation l'impémentation de l'outil. 
+Nous allons donc précisé dans la documentation l'impémentation de l'outil.
+
+### Stratégie de sauvegarde
+
+* Le cluster est répliqué dans 3 AZ AWS ce qui le rend hautement disponibile. Nous avons donc une première sécurisation des données car la sauvegarde reste opérationnelle avec une AZ indisponible.
+* LesClusters et le Bucket S3 qui stocke les sauvegardes sont dans des régiosn différentes. Ce qui nous garantie la disponibilité des données. 
 
 ---
-
 
 ## I - Configuration de la sauvegarde
 
@@ -180,7 +184,7 @@ Il est maintenant nécessaire d'adapter la politique générée à nos besoins (
 
 ### 2.1 - Installer et utiliser K9S pour superviser Kubernetes
 
-**A developper** ..
+<!-- TODO Split out and expand -->
 
 ```console
 sudo apt-get install snapd
@@ -197,7 +201,110 @@ Cette partie se décompose en plusieurs sous-étapes:
 - Déployer la configuration
 - Vérifier le fonctionnement, les tests.
 
-Nous modifions les fichiers du chart Helm Postgres `helm/postgres/templates/postgres.yaml` pour activer le fonctionnement de la sauvegarde.
+#### Les parémétrages
+
+Postgres-operateur est installé comme un Helm chart.
+Il a été configuré pour la mise en oeuvre de le cluster posgreSQL composé de ses 3 pods. 
+
+Pour réaliser le paramétrage, nosu avons été amené à effectuer des recherches en compélement sur le site officiel et sur des blogs spécialisées.
+
+Un fichier de ConfigMap est utilisé pour les variables et secret.
+Les accès sont gérés avec des paires de clés pour se connecter sur les ressources AWS. 
+La configuration est déployées avec le code IaC.
+
+##### Configuration générale
+
+Dans ce fichier, Postres-Operateur en tant que Helm Chart apporte la configuration spécifique dans le ConfigMap qui sera interprété par Kubernetes. Il précise les valeurs personnalisées à prendre en compte. Nous précisons ici l'emplacement où aller les chercher. (voir le contenu du fichier ci-dessous)
+
+```console
+    file("${path.module}/postgres-operator/postgres-operator-values.yaml")
+  ]
+```
+Extrait du Fichier : /fastapi-k8s/terraform/deployments/releases/postgres_operator.tf
+
+##### Configuration de la sauvegarde
+
+**La configuration - "postgres_operator.tf" :**
+
+Le values "configKubernetes.pod_environment_configmap" précise le configmap qui contient l'information des configuration des cluster postgres dans notre environment.
+
+Chaque pod utilise l'information, les valeurs du configMap "postgres-operator-pod-config". 
+L'emplacement du backup est précisé par le nom de la région : "us-east-1"  
+```console
+configKubernetes:
+  pod_environment_configmap: "postgres-operator-pod-config"
+configAwsOrGcp:
+  aws_region: "us-east-1"
+```
+
+
+**Le ConfigMap - pod-config.yaml :**
+
+On utulise le ConfigMap pour itnitialiser les variables d'environnement dans chaque pod Postgres.
+Parmi les variables d'environnement qui sont dans le ConfigMap, il y 2 parties :
+
+Dans cette configuration, nous précisons, 
+* le nom du bucket, 
+* la methode de sauvegarde WAL,
+* le planning de sauvegarde,
+* les secrets, pour avoir accès au backup AWS S3, la paire de clé.
+* La rotation des backup, avec le nombre de backup à conserver  
+* Extrait du Fichier : /fastapi-k8s/helm/postgres-operator-config/templates/pod-config.yaml :
+
+#### Procédure
+```console
+  # Backup definition
+  WAL_S3_BUCKET: devops-boot-s3backup         # Préciser le nom du Backet
+  WAL_BUCKET_SCOPE_PREFIX: ""
+  WAL_BUCKET_SCOPE_SUFFIX: ""
+  USE_WALG_BACKUP: "true"                     # Activation de la sauvegarde avec la methode WAL
+  USE_WALG_RESTORE: "true"                    # Activation de la restauration
+  BACKUP_SCHEDULE: '00 12 * * *'              # Planning de sauvegarde chaque 12h UTC
+  AWS_ACCESS_KEY_ID: {{ .Values.s3_backup_aws_access_key_id }}     # La paire de Clés d'accès AWS S3 pour accéder au Bucket ID et et CLE
+  AWS_SECRET_ACCESS_KEY: {{ .Values.s3_backup_aws_secret_access_key }}
+  AWS_REGION: us-east-1                      # La régions de notre Bucket S3 
+  WALG_DISABLE_S3_SSE: "true"                # Le chiffrement est désactivé
+  BACKUP_NUM_TO_RETAIN: "5"                  # Nombre de backup à conserver
+```
+
+##### Configuration de la restauration 
+
+Dans cette configuration, nous précisons ce qui se passe à l'initialisation du Cluster
+* On va gérer l'accès AWS S3 avec les paires de clés, préciser la région, mentionner le nom du bucket concerné par la restauration.
+* On veut restaurer la dernière sauvegarde.
+> Il s'agit de prendre la dernière sauvegarde pour restaurarer l'état.
+> Le master est restauré, puis les replicas ont le choix d'aller chercher les données dans le backup puis de > se synchroniser avec le master, soit ils font un transfert de données du master.
+> Selon le pourcentage de modification du master, l'idée est de solliciter le master le moins possible. plus > de 30%, il restaure à partir du master. A moins de 30%, ils restaurent à partir du backup.
+* Extrait du Fichier : /fastapi-k8s/helm/postgres-operator-config/templates/pod-config.yaml :
+
+#### Procédure
+```console
+  # Auto restore at cluster initiation
+  CLONE_AWS_ACCESS_KEY_ID: {{ .Values.s3_backup_aws_access_key_id }}  # La paire de clé, l'authenbtification.
+  CLONE_AWS_SECRET_ACCESS_KEY: {{ .Values.s3_backup_aws_secret_access_key }}
+  CLONE_AWS_REGION: us-east-1                   #La région où se situe le Bucket S3
+  CLONE_METHOD: CLONE_WITH_WALE                 # La methode de clonage, de sauvegarde
+  CLONE_WAL_BUCKET_SCOPE_PREFIX: ""
+  CLONE_WAL_S3_BUCKET: devops-boot-s3backup    # Le nom du bucket à restaurer
+```
+
+Cette configuration est globale pour notre postres-cluster, quelques soit le nombre de cluster. Chaque cluster créé dans notre Kubernetes sera automatiquement configuré pour la sauvegarde et la restauration.   
+
+En complément, au niveau du cluster des précisions sont à prendre en compte.
+Dans la configuration de Postrgres-cluster, nous devons spécifier quel cluster doit être restauré parmis les backup, dons notre cas, c'est "fastapi-db".
+
+> Note : 
+> fastapi-db = nom du cluster 
+> fastapi_traefik = nom d'utilisateur dans la base de données
+> fastapi_traefik = nom de la base de données
+
+#### Procédure
+Extrait Fichier helm : /fastapi-k8s/helm/postgres-cluster/templates/postgres.yaml :
+```console
+  env:
+    - name: CLONE_SCOPE
+      value: fastapi-db
+```
 
 #### Contraintes
 
@@ -209,19 +316,48 @@ Nous modifions les fichiers du chart Helm Postgres `helm/postgres/templates/post
 
   Il faudra inclure un controle d'intégrité de la sauvegarde ?
 
-#### Procédure
-
 
 ## 3.1 La sauvegarde
 
+La sauvegarde est planifiée. 
+Il réalise un clone, puis effectue un baseBackup (snapshot) pour qui est sockée sur S3 Bucket. 
+
+Une autre sauvegarde, configuré par défaut, s'éxécute après le déploiement du cluster.
+
 ## 3.2 La restauration
 
+La restauration est réalisée automatiaquement si on démarre un cluster vide. 
+Pour rappel, nous avons 3 pods postesgres, chacun dans une AZ différentes. Un master et 2 réplicas configuré par défaut dans un environnement.
+
+## 3.3 Les commandes utiles
+
+```console
+terraform apply -auto-approve
+terraform destroy -auto-approve
+```
 
 ## Sources de documentation
+
+* Documentation officielle de Zalando Postgres-Operator
+> La documentation générale. Elle comprend tous les apects de l'administration général de l'opérateur.
+> Cette documentation est difficile à suivre.
+(https://github.com/zalando/postgres-operator/blob/master/docs/administrator.md)
 
 * Création de la clé d'accès pour le Rôle IAM
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
 
 * Prérequis et Configuration de Zalando Postgres-Operator 
 (https://github.com/zalando/postgres-operator/blob/master/docs/administrator.md#using-aws-s3-or-compliant-services)
+
+* Comment installer, configurer et sauvegarder avec Postres-Operator Zalando
+(https://medium.com/@zkapishov/zalando-postgres-operator-in-production-the-way-of-helm-ccfd639ccb2d)
+
+* Artlicle du mois de mars 2023, Support pour la Configuration de S3
+> Mise en place des sauvegardes en utilisant Zalando
+(https://thedatabaseme.de/2022/03/26/backup-to-s3-configure-zalando-postgres-operator-backup-with-wal-g/)
+
+* Article du mois de mai 2023, Support pour la Configuration de S3
+> Mise en oeuvre de la restauration
+(https://thedatabaseme.de/2022/05/03/restore-and-clone-from-s3-configure-zalando-postgres-operator-restore-with-wal-g/)
+
 
