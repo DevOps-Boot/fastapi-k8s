@@ -122,9 +122,7 @@ On utilise pas `Object lock` ou `chiffrement par défaut` pour simplifier notre 
 - Section Clé de compartiement: "Désactivée"
 - Bouton: "Créer un compartiement"
 
-Une fois créé, afficher les détails du bucket "devops-boot-s3backup"
-
-* Onglet Propriété, **Relever la chaine ARN** (Amazon Ressource Name): "arn:aws:s3:::devops-boot-s3backup"
+Une fois créé, afficher les détails du bucket "devops-boot-s3backup", dans l'onglet "Propriétés", **relever la chaine ARN** (Amazon Ressource Name): "arn:aws:s3:::devops-boot-s3backup"
 
 
 ### 1.5 Attribuer les permissions au rôle IAM et Sécuriser
