@@ -129,21 +129,26 @@ Une fois créé, afficher les détails du bucket "devops-boot-s3backup", dans l'
 
 Cette étape consiste à créer, attribuer les accès nécessaires et limités pour permettre le processus de sauvegarde et de restauration qui seront réalisés par l'opérateur PostgreSQL.
 
-**Procédure**
+#### Procédure
 
-* Poursuivons dans la même fenêtre
-* Selectionner l'Onglet "Permission"
-* Bucket Policy, "Editer"
-* Nous avons utilisé le bouton "AWS Policy Generator" pour générer le code JSON standard.
-  * Step 1 - Policy Type selectionnée : S3 Bacuket Policy
-  * Step 2 - Add Statement(s):
-        - Effect : allow (Objectif est d’autoriser, permettre l’accès) 
-        - Principal : arn:aws:iam::424571028400:user/eks-srvuser (Notre utilisateur IAM role pour l’accès)
-        - Actions : All actions (temporaire)
-        - Amazon Ressource Name (ARN) : arn:aws:s3:::devops-boot-s3backup (Notre bucket fraichement créé)
-  * Step 3 - Generate Policy # Il s’agit de valider nos choix. Une seule règle est nécessaire dans notre cas.
-  * copier / Coller du code dans notre espace Bucket Policy.
-  * Bouton Save changes
+Poursuivons dans la même fenêtre:
+
+- Selectionner l'Onglet "Permission"
+- Bucket Policy, "Editer"
+- Lancer le "AWS Policy Generator" pour générer le code JSON standard:
+
+  - Step 1 - Policy Type selectionnée : S3 Bacuket Policy
+  - Step 2 - Add Statement(s):
+    * Effect : allow (Objectif est d’autoriser, permettre l’accès) 
+    * Principal : arn:aws:iam::424571028400:user/eks-srvuser (Notre utilisateur IAM role pour l’accès)
+    * Actions : All actions (temporaire)
+    * Amazon Ressource Name (ARN) : arn:aws:s3:::devops-boot-s3backup (Notre bucket fraichement créé)
+  - Step 3 - "Generate Policy".
+  
+    Il s’agit de valider nos choix. Une seule règle est nécessaire dans notre cas.
+
+  - Copier / Coller du code dans notre espace Bucket Policy.
+  - Bouton "Save changes"
 
 Maintenant, nous avons autorisé au principal de pouvoir accéder au Bucket. Notre utilisateur a maintenant accès au Bucket.
 
