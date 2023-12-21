@@ -58,8 +58,8 @@ Nous allons donc précisé dans la documentation l'impémentation de l'outil.
   * Paris pour gérer le service IAM
   * Californie pour le service S3. (limitation de notre compte IAM Datascientest)
 
-### 1.2 Création d'un compte utilisateur
 
+### 1.2 Création d'un compte utilisateur
 
 Le rôle IAM permet l'accès au Service S3 pour stocker les fichiers de sauvegarde. 
 
