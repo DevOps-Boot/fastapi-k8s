@@ -169,20 +169,9 @@ Maintenant, nous avons autorisé au principal de pouvoir accéder au Bucket. Not
 
 **A developper** ..
 
-``` 
+```console
 sudo apt-get install snapd
 sudo snap install k9s
-```
-* configurer les variables d'environnement: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
-* Récupérer le cluster config:
-```
-aws eks update-kubeconfig --region eu-west-3 --name [cluster_name] --kubeconfig ~/.kube/[cluster_name].config
-```
-* Configure le variable KUBECONFIG: 
-```
-export KUBECONFIG=~/.kube/[cluster_name].config
-k9s
-```
 
 ### 2.2 Configurer le Cluster Postgres
 
