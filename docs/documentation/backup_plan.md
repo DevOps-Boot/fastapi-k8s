@@ -90,13 +90,15 @@ La clé d'accès du rôle IAM est la methode d'authentification utilisée afin d
 
 #### Procédure
 
-* Poursuivons dans la même fenêtre
-  * selectionner l'onglet: "Information d'identification de sécurité"
-  * Bouton Créer une clé d'accès
-  * Cas d'utilisation: "Interface de ligne de commande (CLI)", cocher "Je comprends les recommandations...", suivant.
-  * Renseigner la description "Description de la valeur d'identification", bouton "Créer une clé d'accès"
-  * Important, bien **Récupérer les clés d'accès** (Clé d'accès et d'accès secrète)
-  * Bouton Terminer.
+Poursuivons dans la même fenêtre
+
+- Selectionner l'onglet: "Information d'identification de sécurité"
+- Bouton "Créer une clé d'accès"
+- Cas d'utilisation: "Interface de ligne de commande (CLI)", cocher "Je comprends les recommandations...", suivant.
+- Renseigner la description "Description de la valeur d'identification", bouton "Créer une clé d'accès"
+- Important, bien **Récupérer les clés d'accès** (Clé d'accès et d'accès secrète)
+- Bouton "Terminer".
+
 
 ### 1.4 Créer le Bucket S3
 
