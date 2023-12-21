@@ -205,11 +205,11 @@ Nous modifions les fichiers du `"Chart Helm Postgres"` suivant pour activer le f
 ## 3.2 La restauration
 
 
-# Sources de documentation
+## Sources de documentation
 
-Création de la clé d'accès pour le Rôle IAM
+* Création de la clé d'accès pour le Rôle IAM
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
 
-Prérequis et Configuration de Zalando Postgres-Operator 
+* Prérequis et Configuration de Zalando Postgres-Operator 
 (https://github.com/zalando/postgres-operator/blob/master/docs/administrator.md#using-aws-s3-or-compliant-services)
 
