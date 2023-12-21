@@ -33,7 +33,8 @@ Nous allons donc précisé dans la documentation l'impémentation de l'outil.
 ---
 
 
-# I - Configuration de la sauvegarde
+## I - Configuration de la sauvegarde
+
 ## 1.1 Mise en oeuvre
 
 > **IMPORTANT**
