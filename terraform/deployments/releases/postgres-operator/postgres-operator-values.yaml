@@ -1,5 +1,5 @@
 configKubernetes:
-  pod_environment_configmap: "pod-config"
+  pod_environment_configmap: "postgres-operator-pod-config"
 configAwsOrGcp:
   aws_region: "us-east-1"
 configGeneral:
