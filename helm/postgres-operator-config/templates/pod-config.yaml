@@ -17,7 +17,6 @@ data:
   BACKUP_NUM_TO_RETAIN: "5"
 
   # Auto restore at cluster initiation
-  CLONE_USE_WALG_RESTORE: "true"
   CLONE_AWS_ACCESS_KEY_ID: {{ .Values.s3_backup_aws_access_key_id }}
   CLONE_AWS_SECRET_ACCESS_KEY: {{ .Values.s3_backup_aws_secret_access_key }}
   CLONE_AWS_REGION: us-east-1
