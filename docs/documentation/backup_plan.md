@@ -187,14 +187,17 @@ Cette partie se décompose en plusieurs sous-étapes:
 Nous modifions les fichiers du `"Chart Helm Postgres"` suivant pour activer le fonctionnement de la sauvegarde.
 (helm/postgres/templates/postgres.yaml)
 
-**Contraintes**
+#### Contraintes
 
-* L'opérateur PostGresSQL doit être dans le namespace default. Sinon, un paramétrage complémentaire RBAC est nécessaire.
+* L'opérateur PostGresSQL doit être dans le namespace default.
+
+  Sinon, un paramétrage complémentaire RBAC est nécessaire.
   
-* Nous avons pu observer que en cas d'erreur l'outil à réaliser une restauration automatiquement. Il faudra inclure un controle d'intégrité de la sauvegarde ?
+* Nous avons pu observer que, en cas d'erreur, l'outil effectue une restauration automatiquement.
 
-**Procédure**
+  Il faudra inclure un controle d'intégrité de la sauvegarde ?
 
+#### Procédure
 
 
 ## 3.1 La sauvegarde
