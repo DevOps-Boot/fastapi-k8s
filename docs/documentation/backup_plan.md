@@ -175,14 +175,14 @@ sudo snap install k9s
 
 ### 2.2 Configurer le Cluster Postgres
 
-Cette partie se décompose en plusieurs sous-étapes.
+Cette partie se décompose en plusieurs sous-étapes:
 
-* Rechercher les paramètres nécessaires pour consituer la configuration adéquate
-* Configuer les manifestes helm
-* Déterminer les variables et les informations sensibles, secrètes puis les sécuriser.
-* Tester les permissions et accès du rôle IAM
-* Déployer la configuration
-* Vérifier le fonctionnement, les tests.
+- Rechercher les paramètres nécessaires pour consituer la configuration adéquate
+- Configuer les manifestes helm
+- Déterminer les variables et les informations sensibles, secrètes puis les sécuriser.
+- Tester les permissions et accès du rôle IAM
+- Déployer la configuration
+- Vérifier le fonctionnement, les tests.
 
 Nous modifions les fichiers du `"Chart Helm Postgres"` suivant pour activer le fonctionnement de la sauvegarde.
 (helm/postgres/templates/postgres.yaml)
