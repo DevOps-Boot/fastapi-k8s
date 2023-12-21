@@ -62,7 +62,10 @@ Nous allons donc précisé dans la documentation l'impémentation de l'outil.
 
 
 Le rôle IAM permet l'accès au Service S3 pour stocker les fichiers de sauvegarde. 
-Ce rôle se différentie de notre accès IAM principale car il aura des privilèges limités d'une part car il aura **accès uniquement au Bucket S3** et d'autre part ses **permissions seront défines au stricte nécessaire** pour préserver les données en cas d'attaque.
+
+Ce rôle se différentie de notre accès IAM principal car il aura des privilèges limités car:
+* il aura **accès uniquement au Bucket S3**,
+* ses **permissions seront défines au stricte nécessaire** pour préserver les données en cas d'attaque.
 
 **Procédure**
 
