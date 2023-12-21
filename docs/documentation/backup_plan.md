@@ -152,7 +152,8 @@ Poursuivons dans la même fenêtre:
 
 Désormais, notre utilisateur ("principal") a accès au Bucket.
 
-> Contrainte, il est nécessaire d'adapter avec nos besoins (niveau d'accès, quelle ressources) et nos données spécifiques en l'occurence les informations que nous avons relevés plus tôt dans notre démarche.
+Il est maintenant nécessaire d'adapter la politique générée à nos besoins (niveau d'accès, ressources concernées) et nos données spécifiques, en l'occurence, les informations que nous avons relevées plus tôt.
+
 
 ```json
 {
