@@ -133,7 +133,7 @@ Maintenant, nous avons autorisé au principal de pouvoir accéder au Bucket. Not
 
 ### 2.1 - Installer et utiliser K9S pour superviser Kubernetes
 
-**A developper**
+**A developper** ..
 
 ``` 
 sudo apt-get install snapd
