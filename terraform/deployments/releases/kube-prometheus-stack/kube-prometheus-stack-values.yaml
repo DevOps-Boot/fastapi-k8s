@@ -1,0 +1,26 @@
+defaultRules:
+  create: true
+alertmanager:
+  enabled: true
+grafana:
+  enabled: true
+  adminPassword: prom-operator
+  persistence:
+    enabled: true
+    storageClassName: ebs-sc
+    accessModes:
+      - ReadWriteOnce
+    size: 5Gi
+prometheusOperator:
+  enabled: true
+prometheus:
+  enabled: true
+  storageSpec:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: ebs-sc
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi

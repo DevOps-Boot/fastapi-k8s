@@ -1,0 +1,30 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: postgresql
+spec:
+  selector:
+    matchLabels:
+      application: spilo  # (1)
+  namespaceSelector:
+    any: true  # (2)
+  podMetricsEndpoints:
+    - port: exporter # (3)
+      interval: 15s
+      scrapeTimeout: 10s
+    - targetPort: 8008 # (4)
+      interval: 15s
+      scrapeTimeout: 10s
+  podTargetLabels: # (5)
+    - spilo-role
+    - cluster-name
+    - team
+
+# (1) The selector for this PodMonitor targets all spilo applications. spilo is the image that the postgres-operator uses and contains PostgreSQL, splio and everything needed to cluster the setup. It’s also the default set label by the operator, this should find all cluster instances.
+# (2) This namespaceSelector explicitly instructs the PodMonitor to search in all namespaces. Without a namespaceSelector, the PodMonitor would only look in the same namespace. You an also provide a list of namespaces if you prefer to be more selective.
+# (3) This port name, is from the sidecar container explicitly configured in the postgres-operator configuration above, that is now deployed with every postgresql cluster.
+# (4) This port is from Patroni and provides additional metrics regarding the cluster status, such as the current leader/replica situation and should help to debug potential replication problems.
+# (5) podTargetLabels instructs Prometheus to collect the Kubernetes pod labels and add them to the metrics collected from the scraped exporters. This is useful to identify your different clusters in dashboards and general queries.
+
+# Reference:
+# https://shivering-isles.com/2022/04/postgres-operator-with-monitoring
