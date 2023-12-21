@@ -184,8 +184,7 @@ Cette partie se décompose en plusieurs sous-étapes:
 - Déployer la configuration
 - Vérifier le fonctionnement, les tests.
 
-Nous modifions les fichiers du `"Chart Helm Postgres"` suivant pour activer le fonctionnement de la sauvegarde.
-(helm/postgres/templates/postgres.yaml)
+Nous modifions les fichiers du chart Helm Postgres `helm/postgres/templates/postgres.yaml` pour activer le fonctionnement de la sauvegarde.
 
 #### Contraintes
 
