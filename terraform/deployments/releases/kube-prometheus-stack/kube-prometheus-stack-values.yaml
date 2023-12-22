@@ -23,5 +23,23 @@ prometheus:
         resources:
           requests:
             storage: 5Gi
+  additionalPodMonitors:
+    - name: "postgresql"
+      selector:
+        matchLabels:
+          application: spilo
+      podTargetLabels:
+        - spilo-role
+        - cluster-name
+        - team
+      namespaceSelector:
+        any: true
+      podMetricsEndpoints:
+        - port: exporter
+          interval: 15s
+          scrapeTimeout: 10s
+        - targetPort: 8008
+          interval: 15s
+          scrapeTimeout: 10s
 # Full reference:
 # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
