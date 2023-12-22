@@ -5,6 +5,10 @@ resource "helm_release" "kube-prom-stack" {
   namespace        = "monitoring"
   create_namespace = true
   version          = "55.1.0"
+  set {
+    name  = "grafana.adminPassword"
+    value = var.grafana_admin_password
+  }
   values = [
     file("${path.module}/kube-prometheus-stack/kube-prometheus-stack-values.yaml")
   ]

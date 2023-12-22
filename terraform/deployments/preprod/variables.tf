@@ -21,3 +21,9 @@ variable "s3_backup_aws_secret_access_key" {
   type        = string
   sensitive   = true
 }
+
+variable "grafana_admin_password" {
+  description = "Password for the admin user of Grafana"
+  type        = string
+  sensitive   = true
+}

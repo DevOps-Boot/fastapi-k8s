@@ -6,4 +6,7 @@ AWS_SECRET_ACCESS_KEY = aws_key
 TF_VAR_s3_backup_aws_access_key_id = s3_backup_aws_access_key_id
 TF_VAR_s3_backup_aws_secret_access_key = s3_backup_aws_secret_access_key
 
+# Password for the grafana interface
+TF_VAR_grafana_admin_password = [adminPassword]
+
 # These values need to be set as enviromental secrets in Terraform Cloud.
