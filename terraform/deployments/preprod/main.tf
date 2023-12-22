@@ -14,6 +14,7 @@ module "releases" {
   source                          = "../releases"
   s3_backup_aws_access_key_id     = var.s3_backup_aws_access_key_id
   s3_backup_aws_secret_access_key = var.s3_backup_aws_secret_access_key
+  grafana_admin_password          = var.grafana_admin_password
 }
 
 module "environment_specific_releases" {
