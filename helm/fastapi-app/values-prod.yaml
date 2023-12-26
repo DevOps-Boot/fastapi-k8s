@@ -1,0 +1,25 @@
+# Namespace
+namespace: "prod"
+
+ingress:
+  name: "ingress"
+  fastapiHostname: "devops-fastapi-prod.kvark.fr"
+
+# FastAPI app variables
+fastapiApp:
+  replicas: 3
+  name: "fastapi-app"
+  image: "public.ecr.aws/v4m5s6o6/devops-boot:latest"
+  containerPort: 8000
+
+fastapiService:
+  name: "fastapi-service"
+
+fastapiHpa:
+  name: "fastapi-hpa"
+  minReplicas: 5
+  maxReplicas: 10
+  averageUtilization: 70
+
+clusterIssuer:
+  name: "cluster-issuer"
