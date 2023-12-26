@@ -1,6 +1,6 @@
-asyncpg
-fastapi
-ormar
-psycopg2-binary
-uvicorn
-prometheus-fastapi-instrumentator
+asyncpg==0.29.0
+fastapi==0.106.0
+ormar==0.12.2
+psycopg2-binary==2.9.9
+uvicorn==0.25.0
+prometheus-fastapi-instrumentator==6.1.0
