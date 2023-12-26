@@ -1,6 +1,6 @@
 # https://developer.hashicorp.com/terraform/tutorials/automation/github-actions
 
-name: "Terraform Deploying Preprod Plan"
+name: "Terraform Provisioning Prod Plan"
 
 on:
   pull_request:
@@ -9,12 +9,12 @@ on:
 env:
   TF_CLOUD_ORGANIZATION: "devops-boot"
   TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
-  TF_WORKSPACE: "deployments-preprod"
+  TF_WORKSPACE: "provisioning-prod"
   CONFIG_DIRECTORY: "./"
 
 jobs:
   terraform:
-    name: "Terraform Deploying Preprod Plan"
+    name: "Terraform Provisioning Prod Plan"
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -58,9 +58,9 @@ jobs:
               issue_number: context.issue.number,
             });
             const botComment = comments.find(comment => {
-              return comment.user.type === 'Bot' && comment.body.includes('Terraform Cloud Deployments Preprod Plan Output')
+              return comment.user.type === 'Bot' && comment.body.includes('Terraform Cloud Provisioning Prod Plan Output')
             });
-            const output = `#### Terraform Cloud Deployments Preprod Plan Output
+            const output = `#### Terraform Cloud Provisioning Prod Plan Output
                \`\`\`
                Plan: ${{ steps.plan-output.outputs.add }} to add, ${{ steps.plan-output.outputs.change }} to change, ${{ steps.plan-output.outputs.destroy }} to destroy.
                \`\`\`
