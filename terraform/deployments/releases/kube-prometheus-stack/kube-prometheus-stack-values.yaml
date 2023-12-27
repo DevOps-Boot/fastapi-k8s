@@ -41,7 +41,7 @@ prometheus:
         - targetPort: 8008
           interval: 15s
           scrapeTimeout: 10s
-    - name: "fastapi_app"
+    - name: "fastapi-app"
       selector:
         matchLabels:
           name: fastapi-app
