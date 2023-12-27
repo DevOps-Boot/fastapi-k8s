@@ -1,7 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, Field, BaseSettings
+from pydantic import BaseModel, Field
+from pydantic_settings import BaseSettings
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
@@ -13,7 +14,7 @@ import os
 class Settings(BaseSettings):
     db_url: str = Field(..., env='DATABASE_URL')
 
-settings = Settings()
+settings = Settings(db_url=os.environ['DATABASE_URL'])
 
 #from .config import settings
 #database = databases.Database(settings.db_url)
