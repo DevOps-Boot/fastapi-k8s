@@ -14,5 +14,6 @@ resource "helm_release" "cert_manager" {
 resource "helm_release" "cluster_issuer" {
   name       = "cluster-issuer"
   chart      = "${path.module}/../../../helm/clusterissuer"
+  version    = "0.1.6"
   depends_on = [helm_release.cert_manager]
 }
