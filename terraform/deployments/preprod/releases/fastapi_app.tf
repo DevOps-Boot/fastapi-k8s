@@ -2,7 +2,8 @@ resource "helm_release" "fastapi_app" {
   name             = "fastapi-app"
   chart            = "${path.module}/../../../../helm/fastapi-app"
   create_namespace = true
-  version          = "0.1.8"
+  version          = "0.1.9"
+  recreate_pods    = true
   values = [
     file("${path.module}/../../../../helm/fastapi-app/values-preprod.yaml")
   ]
