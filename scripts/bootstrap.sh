@@ -32,5 +32,7 @@ if [ -f .env ]; then
   source .env
 fi
 
+./scripts/docs_setup.sh "$@"
+
 ## and go back
 cd "$cwd"
