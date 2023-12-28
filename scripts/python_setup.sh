@@ -23,9 +23,11 @@ if [ ! -d .venv ]; then
   python3 -m venv .venv
 fi
 
-echo "-- Python: Activate '.venv' virtual environment"
-# shellcheck source="../.venv/bin/activate"
-source .venv/bin/activate
+if [[ ! $(pip -V) =~ .*\.venv.* ]]; then
+  echo "-- Python: Activate '.venv' virtual environment"
+  # shellcheck source="../.venv/bin/activate" disable=SC1091
+  source .venv/bin/activate
+fi
 
 echo "-- Upgrage Python pip and setuptools in venv"
 pip install --upgrade setuptools pip
