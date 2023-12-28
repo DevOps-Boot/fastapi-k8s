@@ -17,9 +17,11 @@ echo "-- Shell: Source profile in case it's been updated"
 # shellcheck source="$HOME/.profile" disable=SC1091
 source "$HOME/.profile"
 
-echo "-- Activate Python virtual environment"
-# shellcheck source="../.venv/bin/activate"
-source .venv/bin/activate
+if [[ ! $(pip -V) =~ .*\.venv.* ]]; then
+  echo "-- Python: Activate '.venv' virtual environment"
+  # shellcheck source="../.venv/bin/activate" disable=SC1091
+  source .venv/bin/activate
+fi
 
 echo "-- Install project Python requirements in venv"
 pip install -r requirements.txt
