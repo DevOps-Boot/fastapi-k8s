@@ -1,7 +1,6 @@
-asyncpg==0.27.0
-fastapi==0.89.1
-ormar==0.12.1
-psycopg2-binary==2.9.5
-uvicorn==0.20.0
-pip-tools==7.3.0
+# Compile project requirement with (pip-tools needed):
+#    pip-compile --output-file=requirements.txt requirements.in
+
+-r requirements.python.in
+-r requirements.app.in
 -r docs/requirements.in

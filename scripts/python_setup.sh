@@ -29,8 +29,9 @@ source .venv/bin/activate
 
 echo "-- Upgrage Python pip and setuptools in venv"
 pip install --upgrade setuptools pip
-echo "-- Install Python requirements in venv"
-pip install -r requirements.txt
+
+echo "-- Install Python setup requirements in venv"
+pip install -r requirements.python.in
 
 ## and go back
 cd "$cwd"

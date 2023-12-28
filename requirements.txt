@@ -7,7 +7,7 @@
 anyio==4.0.0
     # via starlette
 asyncpg==0.27.0
-    # via -r requirements.in
+    # via -r requirements.app.in
 babel==2.13.1
     # via
     #   mkdocs-git-revision-date-localized-plugin
@@ -40,7 +40,7 @@ databases==0.6.2
 defusedxml==0.7.1
     # via cairosvg
 fastapi==0.89.1
-    # via -r requirements.in
+    # via -r requirements.app.in
 ghp-import==2.1.0
     # via mkdocs
 gitdb==4.0.11
@@ -112,7 +112,7 @@ mkdocs-section-index==0.3.8
 natsort==8.4.0
     # via mkdocs-awesome-pages-plugin
 ormar==0.12.1
-    # via -r requirements.in
+    # via -r requirements.app.in
 packaging==23.2
     # via
     #   build
@@ -126,11 +126,11 @@ pillow==9.5.0
     #   cairosvg
     #   mkdocs-material
 pip-tools==7.3.0
-    # via -r requirements.in
+    # via -r requirements.python.in
 platformdirs==4.0.0
     # via mkdocs
 psycopg2-binary==2.9.5
-    # via -r requirements.in
+    # via -r requirements.app.in
 pycparser==2.21
     # via cffi
 pydantic==1.10.4
@@ -193,7 +193,7 @@ typing-extensions==4.8.0
 urllib3==2.1.0
     # via requests
 uvicorn==0.20.0
-    # via -r requirements.in
+    # via -r requirements.app.in
 verspec==0.1.0
     # via mike
 watchdog==3.0.0
