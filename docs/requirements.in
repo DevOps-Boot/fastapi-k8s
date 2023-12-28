@@ -1,17 +1,17 @@
 mkdocs==1.5.3
-mkdocs-material==9.4.9
+mkdocs-material==9.5.3
+mkdocs-material[imaging]==9.5.3
 #mkdocstrings[python]
-markdown-include==0.8.1
 mike==2.0.0
 pygments==2.17.1
 pymdown-extensions==10.4
+markdown-include==0.8.1
 # FIXME TypeError: '<' not supported between instances of 'int' and 'str'
 #markdown-blockdiag @ git+https://github.com/silopolis/markdown-blockdiag@master
 mkdocs-awesome-pages-plugin==2.9.2
 #mkdocs-literate-nav==
 mkdocs-section-index==0.3.8
 mkdocs-git-revision-date-localized-plugin==1.2.1
-mkdocs-material[imaging]==9.4.9
 mkdocs-ezglossary-plugin==1.5.5
 mkdocs-kroki-plugin==0.6.1
 mkdocs-macros-plugin==1.0.5
@@ -21,4 +21,4 @@ mkdocs-macros-plugin==1.0.5
 # mkdocs-pdf-export-plugin
 # mkdocs-with-pdf
 # django-weasyprint
-# mkdocs-include-markdown-plugin
+mkdocs-include-markdown-plugin==6.0.4
