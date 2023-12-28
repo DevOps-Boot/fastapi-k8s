@@ -21,6 +21,9 @@ echo "-- Activate Python virtual environment"
 # shellcheck source="../.venv/bin/activate"
 source .venv/bin/activate
 
+echo "-- Install project Python requirements in venv"
+pip install -r requirements.txt
+
 if [ -f .env ]; then
   echo "-- Source '.env' configuration file"
   # shellcheck source="../.env" disable=SC1091
