@@ -7,7 +7,10 @@ cwd="$(pwd)"
 ## Change to project directory
 cd "$(dirname "$0")/.."
 # shellcheck source="../.env"
-source .env
+if [ -f .env ]; then
+  # shellcheck source="../.env"
+  source .env
+fi
 
 ## Only compatible with Debian and Ubuntu
 if [[ ! $(dpkg -s python3-venv) ]]; then
@@ -23,6 +26,7 @@ fi
 echo "-- Python: Activate '.venv' virtual environment"
 # shellcheck source="../.venv/bin/activate"
 source .venv/bin/activate
+
 echo "-- Upgrage Python pip and setuptools in venv"
 pip install --upgrade setuptools pip
 echo "-- Install Python requirements in venv"
