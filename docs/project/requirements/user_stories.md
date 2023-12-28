@@ -7,6 +7,7 @@
 - Each story should clearly state the 'who', 'what', and 'why' to articulate the needs of different system components or stakeholders (even hypothetical ones).
 - -->
 
+
 ## Functional user stories
 
 Theses stories try to capture the functional requirements pertinent to the architecture and operation of a robust, scalable, and secure microservices application in a cloud environment.
