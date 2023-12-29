@@ -1,6 +1,7 @@
 title: Project requirements
 nav:
   - index.md
+  - app_overview.md
   - user_stories.md
   - tech_requirements.md
   - key_components.md

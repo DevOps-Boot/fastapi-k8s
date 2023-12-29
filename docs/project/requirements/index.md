@@ -5,6 +5,8 @@ A DevOps project implementing a containerized microservices application architec
 
 We start by gathering needs by collecting user stories, from which we extract technical requirements. Finally, before specifying and design the target architecture, we focus our attention on the specific requirements for the key components of the system.
 
+[Application Overview](app_overview.md)
+
 [Architectural and Technical User Stories](user_stories.md)
 
 [Architectural and Technical Requirements](tech_requirements.md)
