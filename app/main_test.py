@@ -6,7 +6,7 @@ app = FastAPI()
 
 @app.get("/")
 async def read_main():
-    return {"msg": "Hello World"}
+    return {"message": "Hello World"}
 
 
 client = TestClient(app)
