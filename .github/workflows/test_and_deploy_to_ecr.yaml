@@ -1,4 +1,4 @@
-name: Deploy to ECR
+name: Test and deploy to ECR
 
 on:
   push:
