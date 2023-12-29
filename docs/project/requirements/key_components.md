@@ -1,9 +1,9 @@
 # Specific Requirements for Key Components
 
 
-Once functional and non-functional requirement extracted from user stories, and before specifying and designing the target architecture, it's important to detail the individual functionalities, configurations, and integrations needed, focusing on the specific requirements for each key component in your stack.
+Once functional and non-functional requirement extracted from user stories, and before specifying and designing the target architecture, it's important to detail the individual functionalities, configurations, and integrations needed, focusing on the specific requirements for each key component in the stack.
 
-Given your stack includes Traefik, FastAPI, PostgreSQL, Kubernetes, EKS, EBS, Helm, Terraform, GitHub, GitHub Actions, Prometheus, Grafana, and ELK, here's an outline that covers the specific requirements for each:
+Given the stack includes Traefik, FastAPI, PostgreSQL, Kubernetes, EKS, EBS, Helm, Terraform, GitHub, GitHub Actions, Prometheus, Grafana, and ELK, here's an outline that covers the specific requirements for each:
 
 
 ## Traefik (Load Balancer/Reverse Proxy)
@@ -122,16 +122,6 @@ Given your stack includes Traefik, FastAPI, PostgreSQL, Kubernetes, EKS, EBS, He
 - **Chart Repository Management**: How and where Helm charts will be stored and managed.
   - Decide on the repository for storing and managing Helm charts (e.g., internal repository, Helm Hub).
   - Implement versioning and release management strategies for Helm charts.
-
-
-## Ansible (Configuration Management)
-
-- **Automation Scripts**: Specific scripts for automating server and application configuration.
-  - Write Ansible playbooks for automating the setup and configuration of servers and other infrastructure components.
-  - Include tasks for installing and configuring necessary software and dependencies.
-- **Role-Based Tasks**: Define roles and tasks within Ansible for modular configuration management.
-  - Organize playbooks into roles for modularity, focusing on different aspects like database setup, web server configuration, etc.
-  - Ensure idempotency in Ansible roles to allow safe reruns of playbooks.
 
 
 ## Terraform (Infrastructure as Code)
