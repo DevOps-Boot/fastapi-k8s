@@ -4,6 +4,9 @@ name: "Terraform Provisioning Prod Plan"
 
 on:
   pull_request:
+    paths:
+      - "provisioning-prod/**"
+      - ".github/workflows/terraform_provisioning_prod_plan.yaml"
   workflow_dispatch:
 
 env:
