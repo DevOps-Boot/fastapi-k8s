@@ -296,7 +296,8 @@ Pour des modifications, ajustez les fichiers de configuration et répétez les �
 ### Desinstallation de notre environnement
 
 Suppression de l'infrastructure : Lorsque vous n'avez plus besoin de l'infrastructure, utilisez Terraform pour la détruire proprement et éviter des coûts inutiles.
-
+Important : Il faut commencer par détruire les applications avec le job `deployments` puis ensuite détruire l'infrastructure avec le job `provisioning`.
+Cas contraire, la conséquence sera la suppression manuelle du stockage EBS.
 ```console
 $ terraform destroy -var=cluster_name=GaudryPreprod
     Plan: 0 to add, 0 to change, 55 to destroy.
