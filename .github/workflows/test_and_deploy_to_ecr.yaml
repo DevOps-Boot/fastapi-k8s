@@ -19,7 +19,7 @@ env:
 
 jobs:
   test:
-    name: Application unittests and flake8 tests
+    name: Application unittests
     runs-on: ubuntu-latest
     strategy:
       matrix:
