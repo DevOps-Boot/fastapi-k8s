@@ -73,4 +73,6 @@ tags:
 
 ## Professional communication and teamwork
 
+- Maintain effective communication with team members, technical managers, network and security teams, and hosting solution providers to ensure a collaborative work environment.
+
 - Engage with professional communities, possibly in English, to share insights, seek advice, and contribute to collective knowledge.
