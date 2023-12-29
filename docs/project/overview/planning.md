@@ -7,7 +7,6 @@ tags:
 
 # Planning
 
-<!-- [TOC] -->
 
 ## Stage 0: Project framing
 
@@ -23,7 +22,6 @@ tags:
 
 ## [Stage 1: Requirements specifications and Project setup](https://github.com/DevOps-Boot/fastapi-k8s/milestone/1)
 
-
 ### Activities
 
 * Define project context and scope/perimeter
@@ -37,7 +35,11 @@ tags:
 * Organize and document code repository organization
 * Organizing project management: Choice of methods
 
+
 ### Deliverables
+
+* Requirements and specification document
+* Implementation architecture and workflow schemas
 
 
 ### Deadline
@@ -56,14 +58,17 @@ tags:
 * High-Availability
 * Backup and Disaster Recovery
 
+
 ### Deliverables
 
 * Infrastructure and application deployment scripts
+
 
 ### Extras
 
 * Implement IaC tools and techniques
 * Use Cloud services to host and deploy the application
+
 
 ### Deadline
 
@@ -87,6 +92,7 @@ tags:
 * Consumption by users
 * Log management
 
+
 ### Deliverable
 
 * Any document describing and explaining the chosen architecture (UML diagram)
@@ -98,11 +104,12 @@ tags:
 2023.11.20
 
 
-
 ## [Stage 4: CI/CD pipelines](https://github.com/DevOps-Boot/fastapi-k8s/milestone/4)
 
 !!! note
     This is the most important step in the project, as it is the heart of the DevOps training.
+!!!
+
 
 ### Activities
 
@@ -122,13 +129,13 @@ The environments simply have to be separated.
 
 Source code should go through automated tests before being deployed to production to ensure correct behavior.
 
+
 ### Deadline
 
 2023.11.25
 
 
 ## [Stage 5: Monitoring and Observability](https://github.com/DevOps-Boot/fastapi-k8s/milestone/5)
-
 
 ### Activities
 
@@ -142,6 +149,7 @@ Using a monitoring system, which includes a server, collection agents and a moni
 * When the console shows a fault on an indicator, determine the cause of the problem
 * Regularly report to developers on performance statistics of their applications in production
 
+
 ### Bonus step
 
 * Define metrics, "health points" relevant to the application.
@@ -149,9 +157,11 @@ Using a monitoring system, which includes a server, collection agents and a moni
 * Define thresholds from which it is considered that there is a malfunction of the architecture and/or the application, this must trigger an alarm.
 * Define automatic actions in response to these alarms.
 
+
 ### Deadline
 
 2023.12.01
+
 
 ## Stage 6: Automation
 
@@ -161,6 +171,7 @@ Using a monitoring system, which includes a server, collection agents and a moni
 * Create declarative templates (YAML) to deploy infrastructure, environments and application
 * Use environment variables to secure sensitive data and avoid template redundancy.
   These templates will be reusable, repeatable regardless of the deployed environment
+
 
 ### Deadline
 
@@ -194,9 +205,9 @@ If the renderings are not up to par and delivered on time, your project cannot b
 Semaine du 12 Décembre
 
 
-## Entretien final
+## Final interview
 
-To validate the RNCP36061 “DevOps System Administrator” professional title:
+To validate the {{RNCP36061}}:
 
 The evaluation session to obtain the professional title brings together a jury of professionals in the field, is organized face-to-face in Paris and is based on several elements:
 
