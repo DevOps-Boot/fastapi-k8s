@@ -36,3 +36,26 @@ This includes, but is not limited to:
 The project revolves around a microservices architecture application, utilizing a combination of Traefik, FastAPI, and PostgreSQL. This setup is given as an example of a realistic and commonly used stack in modern cloud-native applications.
 
 The deployment target is a Kubernetes cluster, which is the de facto standard for orchestrating containerized applications. This choice reflects the current industry trend towards Kubernetes and its ecosystem for managing complex applications.
+
+
+## Educational and Professional Significance
+
+Completing this project successfully is crucial for the attainment of the DevOps Engineer Diploma.
+
+It acts as a capstone, synthesizing the knowledge and skills acquired throughout the course.
+
+It also serves as a valuable portfolio piece for professional development, showcasing the candidate's capabilities to potential employers in the field of DevOps.
+
+
+## Compliance with Academic Standards
+
+The project adheres to the academic standards set forth by the educational institution.
+
+It emphasizes not only technical proficiency but also the application of theoretical knowledge, problem-solving skills, and adherence to best practices in DevOps and cloud computing.
+
+
+## Market Relevance
+
+Incorporating current industry trends and technologies, the project remains highly relevant to the job market and current enterprise needs.
+
+It addresses the growing demand for DevOps professionals who are skilled in cloud-based, microservices architectures and familiar with the challenges of deploying and managing these systems at scale.
