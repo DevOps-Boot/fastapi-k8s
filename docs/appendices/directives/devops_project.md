@@ -1,165 +1,174 @@
-# DevOps : Déploiement et cycle de vie d’une application
-
-<!-- [TOC] -->
-
-## Description détaillée
-
-L’objectif de ce projet est de faire la démonstration pratique de la plupart des éléments techniques appris durant le cursus DevOps.
-
-L’activité de DevOps dans une *équipe* est une activité de *support au développement* et d’*automatisation* des divers éléments pratiques nécessaires au bon fonctionnement d’une application.
-
-Ce projet consiste à rassembler les aspects pratiques découverts dans les modules du cursus et de les combiner autour d’une *infrastructure* pour réaliser le *déploiement d’une application*, conformément aux *exigences de validation* de votre formation.
-
-Les projets sont réalisés en groupe de **3 ou 4 personnes maximum**.
+# DevOps: deployment and lifecycle of a ReST API web application
 
 
-## Application : FastAPI Traefik
+## Detailed Description
 
-Dépôt GitHub de l'application disponible [ici](https://github.com/DataScientest/fastapi-docker-traefik)
+The objective of this project is to demonstrate most of the technical elements learned during the DevOps curriculum.
 
-Un exemple d’API générique en Python proposé par DataScientest.
-Ce projet pourra convenir pour ceux qui souhaitent créer une application ou modifier celle-ci.
+DevOps, in a *team*, is an activity of *support for development* and *automation* of the various practical elements necessary for the proper functioning of an application.
 
-Pour les objectifs du projet, on vous demandera de déployer l’application avec un *déploiement en mode “micro-service”* sur un tout *nouvel environnement* de façon *sécurisée*.
-Il faudra également y inclure un *point d’entrée (proxy) via **Traefik***.
+This project consists of gathering the practical aspects discovered in the modules of the curriculum, and combining them into an *infrastructure* to realize the *deployment of an application*, in accordance with the *validation requirements* of your training.
 
-
-> [Documentation Traefik](https://doc.traefik.io/traefik/)
-
-Il y a plusieurs possibilités :
-
-* Déployer cette application sur Kubernetes
-* Déployer cette application sur le Cloud
-* Déployer cette application sur un environnement local
-
-L’application est simple, mais toute nouvelle fonctionnalité sera grandement appréciée et valorisée pour la validation du projet.
-
-Ce projet convient également aux profils non à l’aise avec les langages de programmation.
+Projects are carried out in groups of **3 or 4 people maximum**.
 
 
-## Planning et attendus du projet
+## Application: FastAPI Traefik
+
+The Git repository of the application is available on [GitHub](https://github.com/DataScientest/fastapi-docker-traefik)
+
+The application is an example of a generic Python ReST API proposed by DataScientest.
+
+This project may be suitable for those who want to create an application or modify it.
+
+For the project objectives, you will be asked to deploy the application in a *micro-services architecture*, on a completely *new environment*, and in a *secure* way.
+
+You will also need to include an *proxy entry point via **Traefik***.
 
 
-### Cahier des charges
+> [Traefik Documentation](https://doc.traefik.io/traefik/)
 
+There are several options:
+
+* Deploy this application on Kubernetes
+* Deploy this application to the cloud
+* Deploy this application on a local environment
+
+The application is simple, but any new functionality will be greatly appreciated and valued for project validation.
+
+This project is also suitable for profiles who are not comfortable with programming languages.
+
+
+## Project planning and expectations
+
+### Specifications
 
 #### Description
 
-Construire le cahier des charges et prise en main de l’application
+Build the specifications and take control of the application
 
 
-#### Objectifs
+#### Objectives
 
-Comprendre les objectifs du projet et les exigences fonctionnelles :
+Understand project objectives and functional requirements:
 
-* Définition des besoins métiers et de l’application utilisée.
-* Importation de l’application sur votre VCS
-* Schéma d’implémentation
-* Instancier un dépôt Git : l’organiser et le documenter
-* Organiser la gestion du projet : Choix des méthodes
-
-
-#### Modules / Masterclass / Modèles
-
-* Documentation externe
-* Dépôt GitHub
-* Trello / Projet GitHub
+* Definition of business needs and application used.
+* Import the application into your VCS
+* Implementation Schema
+* Instantiate a Git repository: organize and document it
+* Organizing project management: Choice of methods
 
 
-#### Livrable et conditions de validation
+#### Modules / Masterclass / Templates
 
-* Cahier des charges au format PDF
+* External documentation
+* GitHub Repository
+* Trello / GitHub Project
+
+
+#### Deliverable and validation conditions
+
+* Specifications in PDF format
 
 
 ### Infrastructure
 
 #### Description
 
-Configurer, déployer et sécuriser l'infrastructure pour l’application
+Configure, deploy and secure infrastructure for the application
 
 
-#### Objectifs
+#### Objectives
 
-Créer une architecture “micro-services” du projet avec une solution IaC :
+Create a micro-services architecture of the project with an IaC solution:
 
-* Conteneurisation et orchestration
-* Choix des composants d'infrastructure de votre application (Front, Back, BDD...)
-* Gérer le réseau et les ports de connexion
-* La sécurité avec des protocoles chiffrés
-* Architecture sur plusieurs serveurs ou instances : haute disponibilité
-* Gestion des sauvegardes, Disaster Recovery
+* Containerization and orchestration
+* Choice of the infrastructure components of your application (Front, Back, BDD...)
+* Manage network and connection ports
+* Security with encrypted protocols
+* Architecture on multiple servers or instances: high availability
+* Backup management, Disaster Recovery
 
 
-#### Modules / Masterclass / Modèles
+#### Modules / Masterclass / Templates
 
-Infrastructure :
+Infrastructure:
 
 * Docker
 * Kubernetes
-* Administration Linux et NGINX
+* Linux and NGINX administration
 * AWS (ECS, Kubernetes, EC2, auto-scaling, ELB, Route 53, ElasticBeanstalk)
 
 
-#### Livrable et conditions de validation
+#### Deliverable and validation conditions
 
-Dépôt GitHub avec :
+GitHub repository with:
 
-* Script système de sauvegarde
-* Script application
+* Backup system script
+* Application script
 
 
-### Gestion des données
+### Data Management
 
 #### Description
 
-Ingestion et consommation des données
+Ingestion and consumption of data
 
 
-#### Objectifs
+#### Objectives
 
-Définir la nature, la vélocité et le volume de données pour l’application :
+Define the nature, velocity and volume of data for the application:
 
-* Choisir la solution technique de stockage de données selon l’application
-* Créer la base de données si besoin pour stocker les données de l’application
-* Programmer la sauvegarde des données de l’application
-* Mettre en place les droits d’accès
-* Ingestion des données dans l’application
-* Consommation par les utilisateurs
-* Gestion des logs
+* Choose the technical data storage solution according to the application
+* Create database if needed to store application data
+* Schedule backup of application data
+* Set up access rights
+* Ingestion of data in the application
+* Consumption by users
+* Log management
 
-#### Modules / Masterclass / Modèles
+
+#### Modules / Masterclass / Templates
 
 * SQL
 * MongoDB
 * AWS (RDS, Dynamo DB, S3, EFS)
 
-#### Livrable et conditions de validation
 
-* Base de données fonctionnelle
-* Stockage des logs
-* Authentification / Autorisation
+#### Modules / Masterclass / Templates
+
+* SQL
+* MongoDB
+* AWS (RDS, Dynamo DB, S3, EFS)
+
+
+#### Deliverable and validation conditions
+
+* Functional database
+* Log storage
+* Authentication / Authorization
 
 
 ### Pipeline CI/CD
 
 #### Description
 
-Configurer les pipelines pour automatiser les processus de compilation, de test, de déploiement et de livraison.
-
-#### Objectifs
-
-* Éviter les erreurs humaines par l'automatisation.
-* S'assurer que les déploiements se déroulent de manière efficace et fiable.
-* Effectuer des tests automatisés et des tests d'intégration pour s'assurer que le code fonctionne correctement
-* Déployer le code sur un environnement de production ou de test en utilisant des outils automatisé
-* Intégrer le code source dans un environnement de développement centralisé
-* Limiter les interruptions de déploiement/livraison continue (blue/green)
-* Collecter les KPI afin de mesurer l'efficacité et le succès des pratiques DevOps. (Deployment Cycle Time, Deployment Frequency, Deployment Success Rate)
+Configure pipelines to automate build, test, deploy, and delivery processes.
 
 
-#### Modules / Masterclass / Modèles
+#### Objectives
 
-Déploiement et automatisation :
+* Avoid human error through automation.
+* Ensure deployments are efficient and reliable.
+* Perform automated tests and integration tests to ensure code is working properly
+* Deploy code to a production or test environment using automated tools
+* Integrate source code into a centralized development environment
+* Limit deployment/continuous delivery interruptions (blue/green)
+* Collect KPIs to measure the effectiveness and success of DevOps practices. (Deployment Cycle Time, Deployment Frequency, Deployment Success Rate)
+
+
+#### Modules / Masterclass / Templates
+
+Deployment and Automation:
 
 * Jenkins
 * Ansible
@@ -167,35 +176,38 @@ Déploiement et automatisation :
 * Circle CI/CD
 * AWS (CodeBuild, CodePipeline, CodeCommit, CodeStar)
 
-Tests :
+Tests:
 
 * Unittest
 * Pytest
 * Selenium
 * JUnit
 
-#### Livrable et conditions de validation
 
-Scripts dans le dépôt GitHub
+#### Deliverable and validation conditions
+
+Scripts in the GitHub repository
 
 
 ### Supervision
 
 #### Description
 
-Définir des métriques et surveiller le système en production pour détecter les erreurs et les problèmes potentiels.
-
-#### Objectifs
-
-* En utilisant un système de supervision, qui comprend un serveur, des agents de collecte et une console de supervision, déployer les agents afin de collecter les indicateurs (métriques) définis.
-* Configurer des tableaux de bord de surveillance pour suivre des métriques clés et configurer des alertes pour notifier les problèmes potentiels.
-* Définir les valeurs seuils et créer des alarmes pertinentes selon les métriques mesurées
-* Définir et créer des actions automatiques en réponse à ces alarmes
-* Lorsque la console fait apparaître un défaut sur un indicateur, déterminer l’origine du problème
-* Régulièrement, rapporter aux développeurs les statistiques de performance de leurs applications en production
+Define metrics and monitor the system in production to detect errors and potential problems.
 
 
-#### Modules / Masterclass / Modèles
+#### Objectives
+
+* Using a monitoring system, which includes a server, collection agents and a monitoring console, deploy the agents to collect the defined metrics.
+* Configure monitoring dashboards to track key metrics and configure alerts to notify potential issues.
+* Set threshold values and create relevant alarms based on measured metrics
+* Define and create automatic actions in response to these
+* Define and create automatic actions in response to these alarms
+* When the console shows a fault on an indicator, determine the cause of the problem
+* Regularly report to developers on performance statistics of their applications in production
+
+
+#### Modules / Masterclass / Templates
 
 * Prometheus
 * Grafana
@@ -203,134 +215,142 @@ Définir des métriques et surveiller le système en production pour détecter l
 * AWS (CloudWatch, EventBrige)
 
 
-#### Livrable et conditions de validation
+#### Deliverable and validation conditions
 
-* Fonctionnement de la solution de monitoring
-* Accès aux outils
-* Tableau de bord
+* Operation of the monitoring solution
+* Access to tools
+* Dashboard
 
 
-### Automatisation
+### Automation
 
 #### Description
 
-Automatiser le déploiement, de l'infrastructure des environnements et de l’application.
+Automate deployment, environment and application infrastructure.
 
 
-#### Objectifs
+#### Objectives
 
-* Automatiser le déploiement de la configuration du serveur (IaC)
-* Créer des modèles déclaratifs (YAML) pour déployer l’infrastructure, les environnements et l’application
-* Utiliser les variables d’environnement pour sécuriser les données sensibles et éviter la redondance de modèles.
-* Ces modèles seront réutilisables, répétables peu importe l’environnement déployé
+* Automate server configuration deployment (IaC)
+* Create declarative models (YAML) to deploy infrastructure, environments and application
+* Use environment variables to secure sensitive data and avoid model redundancy.
+* These models will be reusable, repeatable regardless of the deployed environment
 
 
-#### Modules / Masterclass / Modèles
+#### Modules / Masterclass / Templates
 
-* Automatisation (IaC)
+* Automation (IaC)
 * Terraform
 * AWS (CloudFormation)
 
-#### Livrable et conditions de validation
 
-* Dépôt GitHub avec modèles IaC fonctionnels
+#### Deliverable and validation conditions
 
-<!-- markdownlint-disable MD026 -->
-## Compétences requises pour le titre R.N.C.P.
-<!-- markdownlint-enable MD026 -->
-
-Pour le diplôme RNCP, le projet couvre obligatoirement les compétences suivantes :
-
-* **Automatiser le déploiement d'une infrastructure**
-* **Architecture micro-services : gérer des conteneurs**
-* **Exploiter une solution de supervision**
-
-<!-- markdownlint-disable MD026 -->
-## Condition de validation du titre R.N.C.P.
-<!-- markdownlint-enable MD026 -->
-
-Le projet donne lieu à deux productions :
-
-* Un **dossier de projet** à remettre au jury
-* Un **support de présentation** de type diaporama
-
-### Dossier de projet
-
-Le dossier de projet est **individuel** et **respecte le plan type** suivant :
-
-* **Cahier des charges** ;
-* **Spécifications techniques** du projet
-  * Élaborées par le candidat,
-  * Comprenant de préférence un **schéma** de l’*infrastructure* à déployer et/ou de l’*application* à mettre en production ;
-* Description de la **démarche** et des **outils** utilisés ainsi que des **collaborations** éventuelles avec les autres équipes ;
-* **Réalisations** du candidat comportant les *configurations* et *scripts* les plus significatifs accompagnés d'un argumentaire ;
-* **Description d’une situation de travail** ayant nécessité une *recherche* effectuée par le candidat durant le projet.
+* GitHub repository with functional IaC templates
 
 
-### Support de présentation
+<! -- markdownlint-disable MD026 -->
+## Skills required for the R.N.C.P.
+<! -- markdownlint-enable MD026 -->
 
-Le candidat présente **individuellement** son projet à l’aide d’un support de présentation de type diaporama réalisé en amont de l’épreuve, et selon ce canevas :
+For the RNCP diploma, the project must cover the following skills:
 
-* Présentation de l’entreprise et/ou du service ;
-* Contexte du projet (cahier des charges, contraintes, livrables attendus) ;
-* Présentation de l’infrastructure à déployer et/ou de l’application à mettre en production ;
-* Présentation d’un exemple significatif du travail réalisé par le candidat ;
-* Présentation d’un exemple de recherche effectuée ;
-* Synthèse et conclusion (satisfactions et difficultés rencontrées).
-
-Informations complémentaires concernant l’entretien technique :
-
-* L'entretien technique se déroule obligatoirement à l'issue de la présentation du projet réalisé en amont de la session.
+* **Automate infrastructure deployment**
+* **Micro-service architecture: manage containers**
+* **Operate a monitoring solution**
 
 
-## Diplôme certifié DataScientest
+<! -- markdownlint-disable MD026 -->
+## R.N.C.P.
+<! -- markdownlint-enable MD026 -->
+
+The project involves two productions:
+
+* A **project file** to be submitted to the jury
+* One **presentation media** slideshow type
 
 
-### Généralités validation DataScientest
+### Project dissertation 
 
-* Les exigences et le contenu du projet seront **identiques.**
-* Vous travaillerez **en groupe**.
-  Ne s’applique pas aux apprenants en alternance ou projets individuels.
-* Tous les groupes de projets seront encadrés par **un mentor**.
-* Une réunion par sprint pour faire le point sur les avancements.
-* Un salon dédié sur Slack pour votre projet avec votre mentor sera à votre disposition.
-* L'évaluation finale repose sur deux éléments :
-  * la **soutenance** et
-  * votre **livrable** du projet (GitHub, GitLab...)
+The project file is **individual** and **adheres to the following standard plan**:
+
+* **Specifications**
+
+* **Project Technical Specifications**
+
+* Developed by the candidate,
+* Preferably including a **schema** of the *infrastructure* to be deployed and/or the *application* to be put into production;
+* Description of the **approach** and the **tools** used as well as any **collaborations** with other teams;
+* **Achievements** of the candidate with the most significant *configurations* and *scripts* with a rationale;
+* **Description of a work situation** that required *research* by the applicant during the project.
 
 
-### Critères d’éligibilité au projet
+### Presentation Media
 
-* **Valider les modules** du premier sprint :
+The candidate presents **individually** his or her project using a slideshow presentation media made prior to the test, and according to this outline:
+
+* Presentation of the company and/or service;
+* Project context (specifications, constraints, expected deliverables);
+* Presentation of the infrastructure to be deployed and/or the application to be put into production;
+* Presentation of a significant example of the work done by the candidate;
+* Presentation of an example of research carried out;
+* Summary and conclusion (satisfactions and difficulties encountered).
+
+Further information on technical maintenance:
+
+* The technical interview must take place after the presentation of the project carried out before the session.
+
+
+## DataScientest Certified Diploma
+
+### General DataScientest validation
+
+* Project requirements and content will be **identical.**
+* You will work **in a group**.
+  Does not apply to alternating learners or individual projects.
+* All project groups will be mentored by **a mentor**.
+* One sprint meeting to provide an update on progress.
+* A dedicated Slack lounge for your project with your mentor will be at your disposal.
+* The final evaluation is based on two elements:
+  * the **defence** and
+  * your **deliverable** project (GitHub, GitLab...)
+
+
+### Project Eligibility Criteria
+
+* **Validate the modules** of the first sprint:
+
   * Python 101 DevOps
-  * Virtualisation et Vagrant
-  * Introduction à Linux et Bash
-* Valider le module **Administration des systèmes Linux**
+  * Virtualization and Vagrant
+  * Introduction to Linux and Bash
+
+* Validate module **Linux Systems Administration**
 
 
-### Critères d'évaluation des travaux
+### Work Evaluation Criteria
 
-* Qualité des **rendus intermédiaires** :
-  Pas d’obligation de résultats, mais une obligation d’effort.
-* Gestion de votre temps et de votre effort.
-* Preuve de travail en équipe.
-  Ne s’applique pas aux apprenants en alternance ou projets individuels.
-* Communication et suivi avec votre mentor.
-* Prise de recul sur le sujet.
-
+* Quality of **intermediate renderings**:
+  No obligation of results, but an obligation of effort.
+* Managing your time and effort.
+* Evidence of teamwork.
+  Does not apply to alternating learners or individual projects.
+* Communication and follow-up with your mentor.
+* Taking a step back.
 
 !!! note
-    Le mentor n’est pas un membre de l’équipe.
+    The mentor is not a team member.
 !!!
 
 
-### Conditions de validation (Bootcamp & POEI & Continue)
+### Validation Conditions (Bootcamp & POEI & Continue)
 
-* **Remise du dépôt GitHub en bonne et due forme** :
-  * Production organisée et fonctionnelle.
-  * Documentation, “README” avec procédure d’installation du projet.
+* **Proper GitHub repository delivery**:
 
-* **Soutenance finale en groupe de 35 minutes**
-  * 10 Minutes de présentation
-  * 10 minutes de démonstration
-  * 15 minutes questions / réponses
+  * Organized and functional production.
+  * Documentation, “README” with project installation procedure.
+
+* **35 minute group final defence**
+
+  * 10 Minutes to present
+  * 10 minutes demonstration
+  * 15 minutes questions / answers
