@@ -1,84 +1,94 @@
-# Presentation de l'application
+# Application Overview
 
-Voici une succincte description de l’application, point de départ du projet DevOps.
+Here is a brief description of the application, starting point of the DevOps project.
 
-L'application est actuellement une implémentation de FastAPI, conçue pour une exécution dans un environnement Dockerisé.
+The application is currently an implementation of FastAPI, designed for execution in a Dockerised environment.
 
-Elle utilise Traefik comme reverse proxy et gestionnaire de certificats SSL, ce qui renforce la sécurité des échanges de données.
+It uses Traefik as a reverse proxy and SSL certificate manager, which increases the security of data exchanges.
 
-Les données utilisateur sont gérés à l'aide d'une base de données PostgreSQL assurant fiabilité et performance.
+User data is managed using a PostgreSQL database for reliability and performance.
 
-Cette approche centralisée facilite la gestion et le déploiement sur une seule machine ou serveur.
+This centralized approach makes it easy to manage and deploy on a single machine or server.
 
 
-## Présentation des composants de l'application
+## Application Components Overview
 
-On peut décrire les différents composants comme suit:
+The various components can be described as follows:
+
 
 ### FastAPI
 
-FastAPI est un framework web moderne et réputé, conçu pour la création d'APIs avec Python, qui offre des performances élevées et une écriture de code facile et intuitive.
+FastAPI is a modern and reputable web framework, designed for the creation of web APIs with Python, which offers high performance and easy and intuitive code writing.
 
-La validation des données et la sérialisation sont automatiquement gérées, réduisant ainsi le travail manuel et les risques d'erreur.
+Data validation and serialization are automatically managed, reducing manual work and the risk of errors.
 
-FastAPI supporte la programmation asynchrone, permettant la gestion efficace de requêtes simultanées, ce qui est particulièrement utile pour les opérations d'entrée/sortie ou pour les services qui doivent gérer de nombreuses connexions simultanément.
+FastAPI supports asynchronous programming, allowing efficient management of simultaneous requests, which is particularly useful for input/output operations or for services that need to manage multiple connections simultaneously.
 
 
 ### Docker
 
-Docker, un outil qui permet de 'containeriser' l'application pour un déploiement et une gestion simplifiés.
+Docker is a tool to 'containerize' the application for simplified deployment and management.
 
-Le code est structuré et pensée pour un déploiement via Docker.
+The code is structured and designed for deployment via Docker.
 
 
 ### Traefik
 
-Traefik joue un double rôle.
+Traefik plays a double role.
 
-D'une part, il agit comme un reverse proxy gèrant le routage et redirigeant les requêtes vers les bons services de l'application.
+On one hand, it acts as a reverse proxy that manages routing and redirects requests to the right application services.
 
-D'autre part, il sert de gestionnaire de certificats SSL, une fonctionnalité essentielle pour sécuriser les communications, les échanges de données sur Internet.
+On the other hand, it serves as an SSL certificate manager, an essential feature to secure communications and data exchanges on the Internet.
 
-Cette intégration montre un souci de sécurisation et d'optimisation du trafic réseau.
+This integration shows an attention for securing and optimizing network traffic.
 
 
 ### PostgreSQL
 
-PostgrèsSQL est chargé de gérer, stocker les données utilisateur.
-Il est reconnu pour sa robustesse, sa fiabilité, sa stabilité, sa performance et sa conformité aux standards SQL.
+PostgresSQL is responsible for managing, storing user data.
+It is known for its robustness, reliability, stability, performance and compliance with SQL standards.
 
-L'ensemble du code montre une cohérence dans le choix des technologies qui s’intègrent parfaitement ensemble.
-
-
-## Description de l'architecture monolithique
-
-Dans son format d’origine, l’application est structurée en tant que système monolithique.
-Ceci signifie que toutes ses composantes fonctionnelles - base de données, traitement des données, interface utilisateur - sont intégrées dans une unique répertoire de code source.
-Cette architecture centralisée facilite la gestion et le déploiement.
+The whole code shows consistency in the choice of technologies that integrate perfectly together.
 
 
-### Avantages
+## Monolithic Architecture Description
 
-Cette architecture offre des avantages initiaux tels que la simplicité de développement et de déploiement.
-En effet, en concentrant toutes les fonctions en un seul point, la coordination entre différents composants est intrinsèquement simplifiée, réduisant ainsi la complexité de communication entre divers modules.
+In its original format, the application is structured as a monolithic system.
 
+This means that all its functional components - database, data processing, user interface - are integrated into a single source code directory.
 
-### Limites de l'architecture monolithique*
-
-Toutefois, cette architecture présente des limites, notamment en termes de scalabilité et de flexibilité. Avec l'évolution des besoins et des fonctionnalités, le système monolithique peut devenir lourd et difficile à maintenir. Chaque mise à jour ou modification nécessite le redéploiement de l'intégralité de l'application, ce qui augmente les risques d'erreurs et de temps d'arrêt. En outre, les performances peuvent être affectées par la taille croissante de l'application. Le système monolithique devient moins réactif et plus difficile à optimiser. La sécurité peut également devenir une préoccupation, car une faille dans un composant pourrait potentiellement compromettre l'ensemble du système.
+This centralized architecture facilitates management and deployment.
 
 
-## L'évolution vers le cloud et l'architecture micro-services
+### Benefits
 
-### Transition, réflexion sur l'Évolution vers le Cloud et l'architecture micro-services
+This architecture offers initial advantages such as ease of development and deployment.
 
-Face à ces défis, nous allons repenser l'architecture de l'application pour mieux répondre aux exigences modernes de scalabilité, de performance et de sécurité.
-
-C'est dans ce contexte que l'idée de la faire évoluer vers une architecture orientée micro-services, déployée dans un environnement cloud, que notre projet prendra forme.
+By concentrating all functions at one point, coordination between different components is inherently simplified, reducing the complexity of communication between various modules.
 
 
-### Objectif
+### Limits of monolithic architecture*
 
-Le projet s'orientera donc vers une migration de l'application vers le cloud, en utilisant les méthodes DevOps apprises en cours.
+However, this architecture has limitations, especially in terms of scalability and flexibility.
 
-Bien que la structure monolithique actuelle soit maintenue, l'objectif est d'optimiser son déploiement et sa gestion dans le cloud, en exploitant les avantages des technologies et pratiques DevOps, sans nécessairement procéder à une restructuration complète ou au développement de nouvelles fonctionnalités, compte tenu des contraintes de temps.
+With changing needs and features, the monolithic system can become cumbersome and difficult to maintain.
+Each update or change requires redeployment of the entire application, increasing the risk of errors and downtime.
+
+In addition, performance can be affected by the increasing size of the application.
+The monolithic system becomes less responsive and more difficult to optimize.
+
+Security can also become a concern, as a flaw in a component could potentially compromise the entire system.
+
+
+## Evolution towards cloud and micro-services architecture
+
+Faced with these challenges, we will rethink the application deployment architecture to better meet modern scalability, performance and security requirements.
+
+It is in this context that the idea to evolve it towards a micro-service oriented architecture, deployed in a cloud environment, will take shape.
+
+
+### Goal
+
+The project will therefore move towards a migration from legacy application hosting to cloud, using the DevOps methods learned in progress.
+
+While the current monolithic structure is maintained, the goal is to optimize its deployment and management in the cloud, leveraging the benefits of DevOps technologies and practices, without necessarily undertaking a complete restructuring or the development of new functionalities, given the time constraints.
