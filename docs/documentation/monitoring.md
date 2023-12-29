@@ -2,7 +2,7 @@
 
 ## Présentation
 
-Dans une infrastructure DevOps , il est important de supeviser en continue le fonctionne des différents environnement.
+Dans une infrastructure DevOps , il est important de supeviser en continue le fonctionne des différents environnements.
 
 ## Sélection des outils
 
@@ -18,7 +18,7 @@ Son rôle est de renvoyer les données à Grafana pour la visualisation.
 
 ## Installation et configuration
 
-Notre application Prometheus et Grafana sont déployés en utilisant des packages dans des Charts Helm.
+Notre application Prometheus et Grafana est déployée en utilisant des packages dans des Charts Helm.
 
 La configuration du Chart Helm est défini dans le fichier ci-dessous : 
 fastapi-k8s/terraform/deployments/releases/kube-prometheus-stack.tf
@@ -41,7 +41,7 @@ La variable d'environnement qu'il faudra enseigner sera dans ce format :
 
 Dans le fichier suivant, contient toute la configuration par défaut de notre Prometheus-Operator
 /vagrant/fastapi-k8s/terraform/deployments/releases/kube-prometheus-stack/kube-prometheus-stack-values.yaml
-Il précise les fonctionnalités à activer tel que alermanger, grafana, prometheusOperator et prometheus.
+Il précise les fonctionnalités à activer telles que alermanger, grafana, Prometheus-Operator et Prometheus.
 
 La persistance des données est comme toujours un élément important à prendre en compte, dès lors, nous avons modifier ces éléments pour conserver les données collectés et la configuration.  
 
@@ -94,7 +94,7 @@ Cette partie installe un pod-monitor qui va présenter les données à Prometheu
 
 ## Dashboards granafa installés
 
-L'installation des ces 2 dashboards est réalisé à partir des IDs fournit par la bibliothèque de Dashbord d du site de l'éditeur Grafana.
+L'installation des ces 2 dashboards est réalisée à partir des IDs fournit par la bibliothèque de Dashbord d du site de l'éditeur Grafana.
 
 https://grafana.com/grafana/dashboards/9628-postgresql-database/
 
