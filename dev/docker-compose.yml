@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  web:
+    build: ../app
+    command: '-m uvicorn app.main:app --host 0.0.0.0'
+    volumes:
+      - ..:/app
+    expose:
+      - 8000
+    environment:
+      - DATABASE_URL=postgresql://fastapi_traefik:fastapi_traefik@db:5432/fastapi_traefik
+    depends_on:
+      - db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fastapi.rule=Host(`fastapi.localhost`)"
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_USER=fastapi_traefik
+      - POSTGRES_PASSWORD=fastapi_traefik
+      - POSTGRES_DB=fastapi_traefik
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "127.0.0.1:8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@domain-name.com
+      PGADMIN_DEFAULT_PASSWORD: strong-password
+  traefik:
+    image: traefik:v2.9.6
+    ports:
+      - 127.0.0.1:8008:80
+      - 127.0.0.1:8081:8080
+    volumes:
+      - "../traefik/traefik.dev.toml:/etc/traefik/traefik.toml"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+volumes:
+  postgres_data:
