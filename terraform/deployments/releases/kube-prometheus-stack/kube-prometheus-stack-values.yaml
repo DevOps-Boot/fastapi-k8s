@@ -41,5 +41,15 @@ prometheus:
         - targetPort: 8008
           interval: 15s
           scrapeTimeout: 10s
+    - name: "fastapi-app"
+      selector:
+        matchLabels:
+          app: fastapi-app
+      namespaceSelector:
+        any: true
+      podMetricsEndpoints:
+        - targetPort: 8000
+          interval: 15s
+          scrapeTimeout: 10s
 # Full reference:
 # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
