@@ -19,7 +19,6 @@ services:
     image: postgres:15-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-      - ./gladiator_data.csv:/gladiator_data.csv
     expose:
       - 5432
     environment:
