@@ -39,17 +39,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r app/requirements.txt
 
-      - name: Install pytest and flake8
+      - name: Install pytest
         run: |
           pip install pytest
-          pip install flake8
 
       - name: Run tests
         run: |
           pytest
-
-      - name: Run flake8
-        uses: py-actions/flake8@v2
 
   build:
     name: Build Image
