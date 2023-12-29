@@ -1,4 +1,3 @@
-# Write python unit tests based on main.py
 from fastapi.testclient import TestClient
 from fastapi import FastAPI
 
