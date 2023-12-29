@@ -6,6 +6,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "deployments/preprod/**"
+      - ".github/workflows/terraform_deployments_preprod_apply.yaml"
   workflow_dispatch:
 
 env:
