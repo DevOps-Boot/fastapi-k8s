@@ -4,3 +4,4 @@
 .env
 site
 .cache
+*__pycache__*
