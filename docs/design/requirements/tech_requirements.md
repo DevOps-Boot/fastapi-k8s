@@ -116,6 +116,10 @@ These detailed functional requirements provide a clear roadmap for developing an
 
 Detailing and structuring the architectural and technical non-functional requirements will focus on how the system should operate and the qualities it should possess. These requirements are crucial for ensuring the system's reliability, security, and efficiency.
 
+Non-functional requirements play a crucial role in ensuring the system's resilience, efficiency, and alignment with technical, business, and compliance standards.
+
+These user stories focus on the specifics of the technology stack, how each component serves specific technical needs and contributes to the overall functionality and efficiency of the system, including performance, security, maintainability, and scalability.
+
 
 ### SSL/TLS Integration (Traefik)
 
