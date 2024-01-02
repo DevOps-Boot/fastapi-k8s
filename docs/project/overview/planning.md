@@ -202,7 +202,7 @@ If the renderings are not up to par and delivered on time, your project cannot b
 
 ### Deadline
 
-Semaine du 12 Décembre
+2023.12.12
 
 
 ## Final interview
