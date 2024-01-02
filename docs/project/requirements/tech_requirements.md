@@ -1,4 +1,4 @@
-## Architectural and Technical Requirements
+# Architectural and Technical Requirements
 
 <!--
 - **Requirement Extraction**:
@@ -16,28 +16,10 @@
 -->
 
 
-### Functional Requirements
+## Functional Requirements
 
 
-#### Containerized Microservices Architecture (Kubernetes)
-
-- **Requirement**: Implement a scalable and resilient containerized microservices architecture.
-- **Details**:
-  - Utilize Kubernetes for container orchestration and management.
-  - Design for high availability and fault tolerance.
-  - Enable service discovery and dynamic routing.
-
-
-#### Automated CI/CD Pipeline (GitHub Actions)
-
-- **Requirement**: Automate testing, building, and deployment processes.
-- **Details**:
-  - Integrate GitHub Actions for continuous integration and deployment.
-  - Set up automated testing including unit, integration, and end-to-end tests.
-  - Automate deployment to different environments (staging, production).
-
-
-#### High Performance Asynchronous API Service (FastAPI)
+### High Performance Asynchronous API Service (FastAPI)
 
 - **Requirement**: Develop APIs capable of handling high concurrency.
 - **Details**:
@@ -46,7 +28,25 @@
   - Implement proper error handling and validation in API endpoints.
 
 
-#### Database High Availability (PostgreSQL)
+### Containerized Microservices Architecture (Kubernetes)
+
+- **Requirement**: Implement a scalable and resilient containerized microservices architecture.
+- **Details**:
+  - Utilize Kubernetes for container orchestration and management.
+  - Design for high availability and fault tolerance.
+  - Enable service discovery and dynamic routing.
+
+
+### Automated CI/CD Pipeline (GitHub Actions)
+
+- **Requirement**: Automate testing, building, and deployment processes.
+- **Details**:
+  - Integrate GitHub Actions for continuous integration and deployment.
+  - Set up automated testing including unit, integration, and end-to-end tests.
+  - Automate deployment to different environments (staging, production).
+
+
+### Database High Availability (PostgreSQL)
 
 - **Requirement**: Ensure data integrity and availability with database replication and failover.
 - **Details**:
@@ -55,7 +55,7 @@
   - Regularly test failover to ensure data integrity and availability.
 
 
-#### Dynamic Resource Allocation (Kubernetes)
+### Dynamic Resource Allocation (Kubernetes)
 
 - **Requirement**: Implement pod autoscaling based on usage metrics.
 - **Details**:
@@ -64,7 +64,7 @@
   - Ensure autoscaling does not impact ongoing transactions or operations.
 
 
-#### Comprehensive Application Testing
+### Comprehensive Application Testing
 
 - **Requirement**: Integrate end-to-end testing tools in the CI/CD pipeline.
 - **Details**:
@@ -73,7 +73,7 @@
   - Automate test execution as part of the CI/CD pipeline.
 
 
-#### API Documentation Automation
+### API Documentation Automation
 
 - **Requirement**: Ensure API documentation is auto-generated and stays current with code changes.
 - **Details**:
@@ -82,7 +82,7 @@
   - Ensure documentation is clear, accurate, and easily accessible.
 
 
-#### Data Persistence (EBS with Kubernetes)
+### Data Persistence (EBS with Kubernetes)
 
 - **Requirement**: Implement persistent storage solutions for Kubernetes.
 - **Details**:
@@ -91,7 +91,7 @@
   - Manage data backup and recovery processes.
 
 
-#### Kubernetes Resource Management (Helm)
+### Kubernetes Resource Management (Helm)
 
 - **Requirement**: Simplify and manage Kubernetes deployments using Helm.
 - **Details**:
@@ -100,7 +100,7 @@
   - Manage Helm chart versions and releases.
 
 
-#### Zero-Downtime Deployment
+### Zero-Downtime Deployment
 
 - **Requirement**: Implement deployment strategies to avoid downtime.
 - **Details**:
@@ -112,12 +112,12 @@
 These detailed functional requirements provide a clear roadmap for developing and managing the microservices architecture, ensuring robustness, scalability, and efficiency. They cover the core aspects of system functionality, from infrastructure setup to application deployment and operation.
 
 
-### Non-Functional Requirements
+## Non-Functional Requirements
 
 Detailing and structuring the architectural and technical non-functional requirements will focus on how the system should operate and the qualities it should possess. These requirements are crucial for ensuring the system's reliability, security, and efficiency.
 
 
-#### SSL/TLS Integration (Traefik)
+### SSL/TLS Integration (Traefik)
 
 - **Requirement**: Ensure secure communication via SSL/TLS.
 - **Details**:
@@ -126,7 +126,7 @@ Detailing and structuring the architectural and technical non-functional require
   - Integrate SSL/TLS termination with Traefik for encrypted traffic handling.
 
 
-#### Code Quality Assurance (CI Pipeline)
+### Code Quality Assurance (CI Pipeline)
 
 - **Requirement**: Maintain high standards of code quality.
 - **Details**:
@@ -135,7 +135,7 @@ Detailing and structuring the architectural and technical non-functional require
   - Set up quality gates to prevent merging substandard code.
 
 
-#### Kubernetes Cluster Monitoring (Prometheus)
+### Kubernetes Cluster Monitoring (Prometheus)
 
 - **Requirement**: Implement comprehensive monitoring of Kubernetes clusters.
 - **Details**:
@@ -144,7 +144,7 @@ Detailing and structuring the architectural and technical non-functional require
   - Configure alerts for abnormal metrics or system behaviors.
 
 
-#### Effective Log Management (ELK Stack)
+### Effective Log Management (ELK Stack)
 
 - **Requirement**: Efficient handling and analysis of logs.
 - **Details**:
@@ -153,7 +153,7 @@ Detailing and structuring the architectural and technical non-functional require
   - Ensure real-time log analysis and accessibility.
 
 
-#### Consistent Infrastructure Provisioning (Terraform)
+### Consistent Infrastructure Provisioning (Terraform)
 
 - **Requirement**: Achieve consistent and repeatable cloud infrastructure setup.
 - **Details**:
@@ -162,7 +162,7 @@ Detailing and structuring the architectural and technical non-functional require
   - Maintain Terraform state files for tracking and managing infrastructure changes.
 
 
-#### Enhanced Kubernetes Security (Network Policies)
+### Enhanced Kubernetes Security (Network Policies)
 
 - **Requirement**: Implement robust network security within Kubernetes.
 - **Details**:
@@ -171,7 +171,7 @@ Detailing and structuring the architectural and technical non-functional require
   - Regularly audit and update network policies to address new security needs.
 
 
-#### Routine Performance Benchmarking
+### Routine Performance Benchmarking
 
 - **Requirement**: Establish performance benchmarks and regular evaluations.
 - **Details**:
@@ -180,7 +180,7 @@ Detailing and structuring the architectural and technical non-functional require
   - Use benchmark results to guide performance optimization efforts.
 
 
-#### GDPR Compliance in Logging/Monitoring
+### GDPR Compliance in Logging/Monitoring
 
 - **Requirement**: Adhere to GDPR and other data protection regulations.
 - **Details**:
@@ -189,7 +189,7 @@ Detailing and structuring the architectural and technical non-functional require
   - Regularly review and update compliance measures as regulations evolve.
 
 
-#### Cloud Resource Cost Monitoring (AWS Tools)
+### Cloud Resource Cost Monitoring (AWS Tools)
 
 - **Requirement**: Optimize and monitor cloud resource usage and costs.
 - **Details**:
@@ -198,7 +198,7 @@ Detailing and structuring the architectural and technical non-functional require
   - Set up alerts for budget overruns or unexpected cost spikes.
 
 
-#### DNS Routing and Service Discovery (Kubernetes)
+### DNS Routing and Service Discovery (Kubernetes)
 
 - **Requirement**: Efficiently manage service accessibility and DNS routing.
 - **Details**:
@@ -212,7 +212,7 @@ These categorized requirements give a clearer view of what the system is expecte
 These non-functional requirements address critical aspects such as security, compliance, cost management, and performance optimization. They are essential for the system's overall robustness, security, and operational efficiency, providing a comprehensive framework for the non-functional aspects of the system's architecture and technical setup.
 
 
-#### Secure Admin Access (Bastion and VPN)
+### Secure Admin Access (Bastion and VPN)
 
 - **Requirement**: Implement secure and controlled administrative access mechanisms.
 - **Details**:
@@ -221,7 +221,7 @@ These non-functional requirements address critical aspects such as security, com
   - **Security Reviews and Assessments**: Regularly assess and update the security measures to ensure the highest level of protection against new threats.
 
 
-#### Technical Content Management (Docs as Code, DocOps)
+### Technical Content Management (Docs as Code, DocOps)
 
 - **Requirement**: Manage technical documentation efficiently using Docs as Code and DocOps methodologies.
 - **Details**:
@@ -230,7 +230,7 @@ These non-functional requirements address critical aspects such as security, com
   - **Collaboration Tools**: Implement tools that support collaborative writing and reviewing.
 
 
-#### GitOps
+### GitOps
 
 - **Requirement**: Apply GitOps principles for managing and automating the cloud-native application lifecycle.
 - **Details**:
@@ -239,7 +239,7 @@ These non-functional requirements address critical aspects such as security, com
   - **Backup and Recovery of Repositories**: Implement strategies for backing up Git repositories and quick recovery in case of data loss.
 
 
-#### Event Monitoring and Alerting
+### Event Monitoring and Alerting
 
 - **Requirement**: Set up a comprehensive event monitoring and alerting system.
 - **Details**:
@@ -248,7 +248,7 @@ These non-functional requirements address critical aspects such as security, com
   - **Integration with Notification Systems**: Seamlessly integrate with communication tools for prompt alert dissemination.
 
 
-#### API Endpoints Routing (Traefik)
+### API Endpoints Routing (Traefik)
 
 - **Requirement**: Efficiently manage and route API endpoints using Traefik.
 - **Details**:
@@ -257,7 +257,7 @@ These non-functional requirements address critical aspects such as security, com
   - **Dynamic Configuration**: Allow for dynamic changes in routing rules without disrupting service.
 
 
-#### Terraform State Management
+### Terraform State Management
 
 - **Requirement**: Ensure secure and efficient management of Terraform states.
 - **Details**:
@@ -266,7 +266,7 @@ These non-functional requirements address critical aspects such as security, com
   - **Backup and Recovery**: Automate backups of the state files and setup clear recovery mechanism in case of corruption or loss.
 
 
-#### Artifact/Container Registry
+### Artifact/Container Registry
 
 - **Requirement**: Maintain a secure and efficient artifact and container registry.
 - **Details**:
@@ -275,7 +275,7 @@ These non-functional requirements address critical aspects such as security, com
   - **CI/CD Integration**: Seamlessly integrate with CI/CD pipelines for automated pushing and pulling of artifacts/containers.
 
 
-#### IP Address Management
+### IP Address Management
 
 - **Requirement**: Automate and optimize the management of IP addresses.
 - **Details**:
@@ -284,7 +284,7 @@ These non-functional requirements address critical aspects such as security, com
   - **Network Service Integration**: Ensure seamless integration with existing network infrastructure like DNS, DHCP, and other network services.
 
 
-#### Identity and Access Management (IAM)
+### Identity and Access Management (IAM)
 
 - **Requirement**: Implement comprehensive identity and access management solutions.
 - **Details**:
@@ -293,7 +293,7 @@ These non-functional requirements address critical aspects such as security, com
   - **Audit and Compliance**: Maintain detailed access logs of access and changes for security audits and compliance with regulations.
 
 
-#### Requirements Documentation and Traceability
+### Requirements Documentation and Traceability
 
 - **Requirement**: Maintain comprehensive and traceable documentation of all system requirements.
 - **Details**:
@@ -302,7 +302,7 @@ These non-functional requirements address critical aspects such as security, com
   - **Version Control**: Use version control systems to track changes in requirements over time.
 
 
-#### Service Discovery and Service Mesh
+### Service Discovery and Service Mesh
 
 - **Requirement**: Implement efficient service discovery mechanisms and service mesh architecture.
 - **Details**:
@@ -311,7 +311,7 @@ These non-functional requirements address critical aspects such as security, com
   - **Resilience and Observability**: Ensure the service mesh provides enhanced resilience and observability features.
 
 
-#### Nodes and Containers Hardening
+### Nodes and Containers Hardening
 
 - **Requirement**: Harden nodes and containers to enhance security.
 - **Details**:
@@ -320,7 +320,7 @@ These non-functional requirements address critical aspects such as security, com
   - **Regular Security Scans**: Conduct regular security scans and vulnerability assessments.
 
 
-#### Network Segmentation/Separation
+### Network Segmentation/Separation
 
 - **Requirement**: Implement network segmentation to improve security and manageability.
 - **Details**:
@@ -329,7 +329,7 @@ These non-functional requirements address critical aspects such as security, com
   - **Monitoring and Logging**: Monitor network segments for unusual activities and maintain logs for security and troubleshooting.
 
 
-#### Backup
+### Backup
 
 - **Requirement**: Establish a robust backup strategy for all critical components and data.
 - **Details**:
@@ -338,7 +338,7 @@ These non-functional requirements address critical aspects such as security, com
   - **Backup Testing**: Regularly test backups to ensure data integrity and recoverability.
 
 
-#### Disaster Recovery
+### Disaster Recovery
 
 - **Requirement**: Develop and implement a comprehensive disaster recovery plan.
 - **Details**:
@@ -347,7 +347,7 @@ These non-functional requirements address critical aspects such as security, com
   - **Offsite Storage**: Use offsite storage solutions for critical backups to safeguard against local disasters.
 
 
-#### PKI and Certificate Authority
+### PKI and Certificate Authority
 
 - **Requirement**: Establish and manage a Public Key Infrastructure (PKI) and Certificate Authority for digital certificate management.
 - **Details**:
