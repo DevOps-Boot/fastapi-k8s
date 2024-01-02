@@ -11,4 +11,4 @@ We start by gathering needs by collecting user stories, from which we extract te
 
 [Architectural and Technical Requirements](tech_requirements.md)
 
-[Specific Requirements for Key Components](key_componenents.md)
+[Specific Requirements for Key Components](key_components.md)

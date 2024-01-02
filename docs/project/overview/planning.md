@@ -216,4 +216,4 @@ The Professional File (PD) completed by the candidate no later than 15 days befo
 The presentation of the project carried out before the session;
 The written report (Word format) or technical file of the project.
 
-Tous les détails concernant la validation se trouvent dans [ce document](../appendices/directives/rncp_validation.md)
+Tous les détails concernant la validation se trouvent dans [ce document](../../appendices/directives/rncp_validation.md)
