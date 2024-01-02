@@ -8,19 +8,14 @@ tags:
 # Planning
 
 
-## Stage 0: Project framing
+## Stage 0: Project framing, ends 2023.10.25
 
 ### Activities
 
 * Inception meeting
 
 
-### Deadline
-
-2023.10.25
-
-
-## [Stage 1: Requirements specifications and Project setup](https://github.com/DevOps-Boot/fastapi-k8s/milestone/1)
+## [Stage 1: Requirements specifications and Project setup](https://github.com/DevOps-Boot/fastapi-k8s/milestone/1), ends 2023.10.30
 
 ### Activities
 
@@ -42,12 +37,7 @@ tags:
 * Implementation architecture and workflow schemas
 
 
-### Deadline
-
-2023.10.30
-
-
-## [Stage 2: Configure, deploy and secure application infrastructure](https://github.com/DevOps-Boot/fastapi-k8s/milestone/2)
+## [Stage 2: Configure, deploy and secure application infrastructure](https://github.com/DevOps-Boot/fastapi-k8s/milestone/2), ends 2023.11.10
 
 ### Activities
 
@@ -70,12 +60,7 @@ tags:
 * Use Cloud services to host and deploy the application
 
 
-### Deadline
-
-2023.11.10
-
-
-## [Stage 3: Data ingestion and consumption](https://github.com/DevOps-Boot/fastapi-k8s/milestone/3)
+## [Stage 3: Data ingestion and consumption](https://github.com/DevOps-Boot/fastapi-k8s/milestone/3), ends 2023.11.20
 
 ### Activities
 
@@ -99,16 +84,11 @@ tags:
 * Database and/or storage implementation files
 * Query files
 
-### Deadline
 
-2023.11.20
-
-
-## [Stage 4: CI/CD pipelines](https://github.com/DevOps-Boot/fastapi-k8s/milestone/4)
+## [Stage 4: CI/CD pipelines](https://github.com/DevOps-Boot/fastapi-k8s/milestone/4), ends 2023.11.25
 
 !!! note
     This is the most important step in the project, as it is the heart of the DevOps training.
-!!!
 
 
 ### Activities
@@ -130,12 +110,7 @@ The environments simply have to be separated.
 Source code should go through automated tests before being deployed to production to ensure correct behavior.
 
 
-### Deadline
-
-2023.11.25
-
-
-## [Stage 5: Monitoring and Observability](https://github.com/DevOps-Boot/fastapi-k8s/milestone/5)
+## [Stage 5: Monitoring and Observability](https://github.com/DevOps-Boot/fastapi-k8s/milestone/5), ends 2023.12.01
 
 ### Activities
 
@@ -158,12 +133,7 @@ Using a monitoring system, which includes a server, collection agents and a moni
 * Define automatic actions in response to these alarms.
 
 
-### Deadline
-
-2023.12.01
-
-
-## Stage 6: Automation
+## Stage 6: Automation, ends 2023.12.05
 
 **Automate deployment of infrastructure, environments, and application.**
 
@@ -173,12 +143,7 @@ Using a monitoring system, which includes a server, collection agents and a moni
   These templates will be reusable, repeatable regardless of the deployed environment
 
 
-### Deadline
-
-2023.12.05
-
-
-## Training certification project demonstration and defense
+## Training certification project demonstration and defense, ends 2023.12.12
 
 For the demonstration, the application should be:
 
@@ -200,12 +165,7 @@ Particular attention will be given to the form of intermediate renderings. Inclu
 If the renderings are not up to par and delivered on time, your project cannot be validated.
 
 
-### Deadline
-
-2023.12.12
-
-
-## Final interview
+## Final interview, from 20240122
 
 To validate the {{RNCP36061}}:
 
