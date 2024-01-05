@@ -5,7 +5,7 @@ name: "Terraform Deploying Preprod Plan"
 on:
   pull_request:
     paths:
-      - "deployments/preprod/**"
+      - "terraform/deployments/preprod/**"
       - ".github/workflows/terraform_deployments_preprod_plan.yaml"
   workflow_dispatch:
 
