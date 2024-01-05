@@ -6,6 +6,8 @@ on:
   pull_request:
     paths:
       - "terraform/deployments/preprod/**"
+      - "terraform/deployments/modules/**"
+      - "terraform/deployments/releases/**"
       - ".github/workflows/terraform_deployments_preprod_plan.yaml"
   workflow_dispatch:
 
