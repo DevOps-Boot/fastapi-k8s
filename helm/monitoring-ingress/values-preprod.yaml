@@ -1,4 +1,4 @@
-namespace: "prod"
+namespace: "preprod"
 ingress:
   name: "monitoring-ingress"
   grafanaHostname: "grafana.devops-fastapi-staging.kvark.fr"
