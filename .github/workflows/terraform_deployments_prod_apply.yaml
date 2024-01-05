@@ -7,7 +7,7 @@ on:
     branches:
       - main
     paths:
-      - "deployments/prod/**"
+      - "terraform/deployments/prod/**"
       - ".github/workflows/terraform_deployments_prod_apply.yaml"
   workflow_dispatch:
 
