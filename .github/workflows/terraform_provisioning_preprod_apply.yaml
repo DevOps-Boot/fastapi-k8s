@@ -8,6 +8,7 @@ on:
       - main
     paths:
       - "terraform/provisioning/preprod/**"
+      - "terraform/provisioning/modules/**"
       - ".github/workflows/terraform_provisioning_preprod_apply.yaml"
   workflow_dispatch:
 

@@ -6,6 +6,7 @@ on:
   pull_request:
     paths:
       - "terraform/provisioning/prod/**"
+      - "terraform/provisioning/modules/**"
       - ".github/workflows/terraform_provisioning_prod_plan.yaml"
   workflow_dispatch:
 

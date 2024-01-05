@@ -8,6 +8,8 @@ on:
       - main
     paths:
       - "terraform/deployments/prod/**"
+      - "terraform/deployments/modules/**"
+      - "terraform/deployments/releases/**"
       - ".github/workflows/terraform_deployments_prod_apply.yaml"
   workflow_dispatch:
 
