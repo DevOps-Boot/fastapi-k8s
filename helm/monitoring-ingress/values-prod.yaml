@@ -4,8 +4,8 @@ ingress:
   grafanaHostname: "grafana.devops-fastapi-prod.kvark.fr"
   prometheusHostname: "prometheus.devops-fastapi-prod.kvark.fr"
 grafanaService:
-  name: "kube-prom-stack-grafana.monitoring"
+  name: "kube-prom-stack-grafana"
 prometheusService:
-  name: "kube-prom-stack-kube-prome-prometheus.monitoring"
+  name: "kube-prom-stack-kube-prome-prometheus"
 clusterIssuer:
   name: "cluster-issuer"
