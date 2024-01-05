@@ -1,11 +1,11 @@
-namespace: "prod"
+namespace: "monitoring"
 ingress:
   name: "monitoring-ingress"
   grafanaHostname: "grafana.devops-fastapi-prod.kvark.fr"
   prometheusHostname: "prometheus.devops-fastapi-prod.kvark.fr"
 grafanaService:
-  name: "kube-prom-stack-grafana"
+  name: "kube-prom-stack-grafana.monitoring"
 prometheusService:
-  name: "kube-prom-stack-kube-prome-prometheus"
+  name: "kube-prom-stack-kube-prome-prometheus.monitoring"
 clusterIssuer:
   name: "cluster-issuer"
