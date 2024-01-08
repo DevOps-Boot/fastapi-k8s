@@ -9,7 +9,7 @@ tags:
 
 ## Define application requirements and specification
 
-- Analyze business needs to discover and gather the application's functional and non-functional requirements.
+- Analyze application needs to discover and gather its functional and non-functional requirements.
 
 - Elicit and prioritize requirements to build a project plan for the application.
 
@@ -41,7 +41,7 @@ tags:
 
 - Establish a test and pre-production environment for validating updates and configurations before they are deployed to production.
 
-- Configure backup and Disaster recovery
+- Configure backup and disaster recovery
 
 - Implement security best practices throughout
 

@@ -8,7 +8,7 @@ tags:
 An example of a generic Python RESTful API application is proposed by DataScientest in a GitHub [repository](https://github.com/DataScientest/fastapi-docker-traefik).
 The project may also be suitable for those who want to create an application or modify it.
 
-The candidate is asked to automatically deploy the application as a microservices architecture, on a completely new environment, in a secure way, and with API endpoinys proxied through {{Traekfik}}.
+The candidate is asked to automatically deploy the application as a microservices architecture, on a completely new environment, in a secure way, and with API endpoinys proxied through {{Traefik}}.
 
 The infrastructure should be containerized and orchestrated by {{Kubernetes}}, deployed in the Cloud on Amazon EKS, or on a local environment.
 
@@ -29,4 +29,4 @@ Project deliverables include:
 * A presentation slide desk for the project defense
 * A professional portfolio demonstrating DevOps related experiences
 
-The full [DevOps project directives](../../appendices/directives/devops_project.md) is available in the appendices of the documentation.
+The full [DevOps project directives](../../appendices/directives/devops_project.md) are available in the appendices of the documentation.
