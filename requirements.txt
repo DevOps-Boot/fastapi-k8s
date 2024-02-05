@@ -39,7 +39,7 @@ databases==0.6.2
     # via ormar
 defusedxml==0.7.1
     # via cairosvg
-fastapi==0.89.1
+fastapi==0.109.1
     # via -r requirements.app.in
 ghp-import==2.1.0
     # via mkdocs
@@ -183,7 +183,7 @@ sqlalchemy==1.4.41
     # via
     #   databases
     #   ormar
-starlette==0.22.0
+starlette==0.35.1
     # via fastapi
 termcolor==2.4.0
     # via mkdocs-macros-plugin
@@ -192,7 +192,9 @@ tinycss2==1.2.1
     #   cairosvg
     #   cssselect2
 typing-extensions==4.9.0
-    # via pydantic
+    # via
+    #   fastapi
+    #   pydantic
 urllib3==2.1.0
     # via requests
 uvicorn==0.20.0
